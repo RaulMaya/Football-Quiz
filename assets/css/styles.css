@@ -1,0 +1,33 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+    background-image: url("../images/footballbg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+nav {
+  padding: 1rem;
+}
+
+header li {
+  display: inline;
+  padding: 0 1rem;
+}
+
+header ul {
+  list-style: none;
+}
+
+section {
+  text-align: center;
+  z-index: 2;
+}
+
+img {
+  width: 400px;
+}
