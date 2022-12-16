@@ -4,12 +4,6 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 
-body {
-    background-image: url("../images/footballbg.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
 nav {
   padding: 1rem;
 }
@@ -30,4 +24,8 @@ section {
 
 img {
   width: 400px;
+}
+
+.hidden {
+  display: none;
 }
