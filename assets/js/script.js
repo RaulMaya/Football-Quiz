@@ -8,6 +8,8 @@ var listEl = document.createElement("ul");
 
 mainSection.append(timeEl);
 
+var timeLeft, timeInterval;
+
 var questions = [
   questionOne = {
     question: "Who has scored the most goals in World Cup competitions?",
@@ -30,7 +32,7 @@ var questions = [
     correctAnswer: "Ederzito António",
   },
   questionFour = {
-    question: "Who won the Golden Ball of South Africa 2010 World Cup",
+    question: "Who won the Golden Ball of South Africa 2010 World Cup?",
     answers: ["Lionel Messi", "Andres Iniesta", "Diego Forlan", "Wesley Sneijder"],
     correctAnswer: "Diego Forlan",
   },
@@ -52,10 +54,10 @@ var questions = [
 ];
 
 function countdown() {
-  var timeLeft = 120;
+  timeLeft = 10;
   
   // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-  var timeInterval = setInterval(function () {
+  timeInterval = setInterval(function () {
     // YOUR CODE HERE
     if (timeLeft > 1) {
       timeEl.textContent = timeLeft + " Seconds Left.";
@@ -68,7 +70,6 @@ function countdown() {
     } else {
       clearInterval(timeInterval);
       diplayQuestion();
-      
     }
   }, 1000); // 1000 milliseconds
 }
@@ -85,6 +86,7 @@ function diplayQuestion() {
   var arrayindex = Math.round(Math.random() * questions.length)
   h2Text.textContent = questions[arrayindex].question
   listEl.textContent = ""
+
   for (item of questions[arrayindex].answers) {
     console.log(item)
     var listItem =  document.createElement("li");
@@ -101,20 +103,45 @@ function diplayQuestion() {
   var answersList = document.getElementsByClassName("multipleChoice");
   console.log(answersList);
   answersList[0].addEventListener("click", function () {
-    console.log(this)
-    console.log(questions[arrayindex].correctAnswer)
+    var selectedAnswer = this.attributes.id.textContent
+    if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      console.log("Correct Answer");
+      clearInterval(timeInterval);
+      diplayQuestion();
+    } else {
+      console.log("You are fucking not correct");
+    }
   })
   answersList[1].addEventListener("click", function () {
-    console.log(this)
-    console.log(questions[arrayindex].correctAnswer)
+    var selectedAnswer = this.attributes.id.textContent
+    if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      console.log("Correct Answer");
+      clearInterval(timeInterval);
+      diplayQuestion();
+    } else {
+      console.log("You are fucking not correct");
+    }
   })
   answersList[2].addEventListener("click", function () {
-    console.log(this)
-    console.log(questions[arrayindex].correctAnswer)
+    var selectedAnswer = this.attributes.id.textContent
+    if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      console.log("Correct Answer");
+      clearInterval(timeInterval);
+      diplayQuestion();
+    } else {
+      console.log("You are fucking not correct");
+    }
   })
   answersList[3].addEventListener("click", function () {
-    console.log(this)
-    console.log(questions[arrayindex].correctAnswer)
+    var selectedAnswer = this.attributes.id.textContent
+    if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      console.log("Correct Answer");
+      clearInterval(timeInterval);
+      diplayQuestion();
+    } else {
+      console.log("Correct Answer");
+      ("You are fucking not correct");
+    }
   })
 
 }
