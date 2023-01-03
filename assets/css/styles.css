@@ -29,3 +29,15 @@ img {
 .hidden {
   display: none;
 }
+
+ul {
+margin-top: 10px;
+}
+
+ul li {
+  list-style: none;
+}
+
+button {
+  width: auto;
+}
