@@ -17,30 +17,37 @@ var questions = [
       "Gary Lineker",
       "Miroslav Klose",
     ],
+    correctAnswer: "Miroslav Klose",
   },
   questionTwo = {
     question: "What country does Aubameyang play for?",
     answers: ["Gabón", "Etiophia", "Egypt", "Guinea"],
+    correctAnswer: "Miroslav Klose",
   },
   questionThree = {
     question: "Who score the only goal of the EURO 2016 final? ",
     answers: ["Cristiano Ronaldo", "Eder", "Renato Sanches", "Rafael Guerreiro"],
+    correctAnswer: "Miroslav Klose",
   },
   questionFour = {
     question: "Who won the Golden Ball of South Africa 2010 World Cup",
     answers: ["Lionel Messi", "Andres Iniesta", "Diego Forlan", "Wesley Sneijder"],
+    correctAnswer: "Miroslav Klose",
   },
   questionFive = {
     question: "In the 2014 UCL final Real Madrid vs Atletico de Madrid, in what minute of added time did Sergio Ramos tie the game?",
     answers: ["91", "95", "92", "93"],
+    correctAnswer: "Miroslav Klose",
   },
   questionSix = {
     question: "Who won the UCL 96-97?",
     answers: ["Juventus", "Borussia Dortmund", "FC Porto", "Ajax FC"],
+    correctAnswer: "Miroslav Klose",
   },
   questionSeven = {
     question: "Which player didn’t play for Manchester United:",
     answers: ["Troy Deeney", "Wilfred Zaha", "Zlatan Ibrahimovic", "Thomas Cleverly"],
+    correctAnswer: "Miroslav Klose",
   },
 ];
 
@@ -79,9 +86,12 @@ function diplayQuestion() {
   h2Text.textContent = questions[arrayindex].question
   listEl.textContent = ""
   for (item of questions[arrayindex].answers) {
+    console.log(item)
     var listItem =  document.createElement("li");
-    listItem.textContent = item;
+    var answerBtn =  document.createElement("button");
+    answerBtn.textContent = item;
     listEl.append(listItem);
+    listItem.append(answerBtn);
   }
   mainSection.append(h2Text);
   mainSection.append(listEl);
