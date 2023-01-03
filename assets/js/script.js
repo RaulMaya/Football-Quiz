@@ -83,10 +83,10 @@ function startQuiz() {
 
 function diplayQuestion() {
   countdown();
-  var arrayindex = Math.round(Math.random() * questions.length)
-  h2Text.textContent = questions[arrayindex].question
-  listEl.textContent = ""
-
+  console.log(questions)
+  var arrayindex = Math.round(Math.random() * questions.length);
+  h2Text.textContent = questions[arrayindex].question;
+  listEl.textContent = "";
   for (item of questions[arrayindex].answers) {
     console.log(item)
     var listItem =  document.createElement("li");
@@ -106,6 +106,7 @@ function diplayQuestion() {
     var selectedAnswer = this.attributes.id.textContent
     if(selectedAnswer === questions[arrayindex].correctAnswer) {
       console.log("Correct Answer");
+      questions.splice(arrayindex, 1);
       clearInterval(timeInterval);
       diplayQuestion();
     } else {
@@ -116,6 +117,7 @@ function diplayQuestion() {
     var selectedAnswer = this.attributes.id.textContent
     if(selectedAnswer === questions[arrayindex].correctAnswer) {
       console.log("Correct Answer");
+      questions.splice(arrayindex, 1);
       clearInterval(timeInterval);
       diplayQuestion();
     } else {
@@ -126,6 +128,7 @@ function diplayQuestion() {
     var selectedAnswer = this.attributes.id.textContent
     if(selectedAnswer === questions[arrayindex].correctAnswer) {
       console.log("Correct Answer");
+      questions.splice(arrayindex, 1);
       clearInterval(timeInterval);
       diplayQuestion();
     } else {
@@ -136,6 +139,7 @@ function diplayQuestion() {
     var selectedAnswer = this.attributes.id.textContent
     if(selectedAnswer === questions[arrayindex].correctAnswer) {
       console.log("Correct Answer");
+      questions.splice(arrayindex, 1);
       clearInterval(timeInterval);
       diplayQuestion();
     } else {
