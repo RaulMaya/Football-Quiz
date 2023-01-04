@@ -5,10 +5,14 @@ var mainSection = document.querySelector("section");
 var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
 var listEl = document.createElement("ul");
+var answerOutputEl = document.createElement("div")
 
 mainSection.append(timeEl);
+mainSection.append(answerOutputEl);
 
-var timeLeft, timeInterval;
+var timeLeft, timeInterval, arrayindex;
+var rightAnswers = 0;
+var wrongAnswers = 0;
 
 var questions = [
   questionOne = {
@@ -68,6 +72,7 @@ function countdown() {
       timeLeft--;
       
     } else {
+      wrongAnswers++
       clearInterval(timeInterval);
       diplayQuestion();
     }
@@ -84,69 +89,105 @@ function startQuiz() {
 function diplayQuestion() {
   countdown();
   console.log(questions)
-  var arrayindex = Math.round(Math.random() * questions.length);
-  h2Text.textContent = questions[arrayindex].question;
-  listEl.textContent = "";
-  for (item of questions[arrayindex].answers) {
-    console.log(item)
-    var listItem =  document.createElement("li");
-    var answerBtn =  document.createElement("button");
-    answerBtn.setAttribute("class", "multipleChoice")
-    answerBtn.setAttribute("id", item)
-    answerBtn.textContent = item;
-    listEl.append(listItem);
-    listItem.append(answerBtn);
+  if (questions.length < 1) {
+    clearInterval(timeInterval);
+    mainSection.setAttribute("class", "hidden");
+    console.log(rightAnswers);
+    console.log(wrongAnswers);
+    console.log("Game Over");
+  } else { 
+    arrayindex = Math.floor(Math.random() * questions.length);
+    console.log(arrayindex);
+    h2Text.textContent = questions[arrayindex].question;
+    listEl.textContent = "";
+    for (item of questions[arrayindex].answers) {
+      console.log(item)
+      var listItem =  document.createElement("li");
+      var answerBtn =  document.createElement("button");
+      answerBtn.setAttribute("class", "multipleChoice")
+      answerBtn.setAttribute("id", item)
+      answerBtn.textContent = item;
+      listEl.append(listItem);
+      listItem.append(answerBtn);
+    }
+    mainSection.append(h2Text);
+    mainSection.append(listEl);
+  
+    var answersList = document.getElementsByClassName("multipleChoice");
+    console.log(answersList);
+    answersList[0].addEventListener("click", function () {
+      var selectedAnswer = this.attributes.id.textContent
+      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+        console.log("Correct Answer");
+        answerOutputEl.textContent = "Great! Correct Answer!";
+        rightAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      } else {
+        console.log("You are fucking not correct");
+        wrongAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      }
+    })
+    answersList[1].addEventListener("click", function () {
+      var selectedAnswer = this.attributes.id.textContent
+      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+        console.log("Correct Answer");
+        answerOutputEl.textContent = "Great! Correct Answer!";
+        rightAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      } else {
+        console.log("You are fucking not correct");
+        answerOutputEl.textContent = "Wrong Answer";
+        wrongAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      }
+    })
+    answersList[2].addEventListener("click", function () {
+      var selectedAnswer = this.attributes.id.textContent
+      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+        console.log("Correct Answer");
+        answerOutputEl.textContent = "Great! Correct Answer!";
+        rightAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      } else {
+        console.log("You are fucking not correct");
+        answerOutputEl.textContent = "Wrong Answer";
+        wrongAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      }
+    })
+    answersList[3].addEventListener("click", function () {
+      var selectedAnswer = this.attributes.id.textContent
+      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+        console.log("Correct Answer");
+        answerOutputEl.textContent = "Great! Correct Answer!";
+        rightAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      } else {
+        console.log("You are fucking not correct");
+        answerOutputEl.textContent = "Wrong Answer";
+        wrongAnswers++
+        questions.splice(arrayindex, 1);
+        clearInterval(timeInterval);
+        diplayQuestion();
+      }
+    })
   }
-  mainSection.append(h2Text);
-  mainSection.append(listEl);
 
-  var answersList = document.getElementsByClassName("multipleChoice");
-  console.log(answersList);
-  answersList[0].addEventListener("click", function () {
-    var selectedAnswer = this.attributes.id.textContent
-    if(selectedAnswer === questions[arrayindex].correctAnswer) {
-      console.log("Correct Answer");
-      questions.splice(arrayindex, 1);
-      clearInterval(timeInterval);
-      diplayQuestion();
-    } else {
-      console.log("You are fucking not correct");
-    }
-  })
-  answersList[1].addEventListener("click", function () {
-    var selectedAnswer = this.attributes.id.textContent
-    if(selectedAnswer === questions[arrayindex].correctAnswer) {
-      console.log("Correct Answer");
-      questions.splice(arrayindex, 1);
-      clearInterval(timeInterval);
-      diplayQuestion();
-    } else {
-      console.log("You are fucking not correct");
-    }
-  })
-  answersList[2].addEventListener("click", function () {
-    var selectedAnswer = this.attributes.id.textContent
-    if(selectedAnswer === questions[arrayindex].correctAnswer) {
-      console.log("Correct Answer");
-      questions.splice(arrayindex, 1);
-      clearInterval(timeInterval);
-      diplayQuestion();
-    } else {
-      console.log("You are fucking not correct");
-    }
-  })
-  answersList[3].addEventListener("click", function () {
-    var selectedAnswer = this.attributes.id.textContent
-    if(selectedAnswer === questions[arrayindex].correctAnswer) {
-      console.log("Correct Answer");
-      questions.splice(arrayindex, 1);
-      clearInterval(timeInterval);
-      diplayQuestion();
-    } else {
-      console.log("Correct Answer");
-      ("You are fucking not correct");
-    }
-  })
 
 }
 

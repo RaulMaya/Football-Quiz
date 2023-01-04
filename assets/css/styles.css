@@ -44,3 +44,7 @@ button {
   cursor: pointer;
   padding: 2px
 }
+
+#start-quiz-button {
+  margin-top: 1rem;
+}
