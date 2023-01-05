@@ -10,8 +10,10 @@ var gameOverText =  document.createElement("p");
 var resetGame =  document.createElement("button");
 
 
-mainSection.append(timeEl);
+mainSection.append(h2Text);
+mainSection.append(listEl);
 mainSection.append(answerOutputEl);
+mainSection.append(timeEl);
 
 var timeLeft, timeInterval, arrayindex, questionsArray;
 var rightAnswers = 0;
@@ -77,6 +79,7 @@ function countdown() {
     } else {
       wrongAnswers++
       clearInterval(timeInterval);
+      questionsArray.splice(arrayindex, 1);
       diplayQuestion();
     }
   }, 1000); // 1000 milliseconds
@@ -126,8 +129,7 @@ function diplayQuestion() {
       listEl.append(listItem);
       listItem.append(answerBtn);
     }
-    mainSection.append(h2Text);
-    mainSection.append(listEl);
+
   
     var answersList = document.getElementsByClassName("multipleChoice");
     console.log(answersList);
