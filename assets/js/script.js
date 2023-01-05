@@ -11,14 +11,13 @@ var resetGame = document.createElement("button");
 var feedBackAnswer = document.createElement("p");
 var score = document.createElement("p");
 
-
 mainSection.append(h2Text);
 mainSection.append(listEl);
 mainSection.append(answerOutputEl);
 mainSection.append(feedBackAnswer);
 mainSection.append(timeEl);
 
-var timeLeft, timeInterval, arrayindex, questionsArray;
+var timeLeft, timeInterval, arrayindex, questionsArray, qCounter;
 var rightAnswers = 0;
 var wrongAnswers = 0;
 
@@ -81,33 +80,33 @@ var questions = [
   }),
   (questionEight = {
     question: "With which of the following teams Jose Mourinho won the UCL?",
-    answers: [
-      "Real Madrid",
-      "AS Monaco",
-      "Chelsea",
-      "FC Porto",
-    ],
+    answers: ["Real Madrid", "AS Monaco", "Chelsea", "FC Porto"],
     correctAnswer: "FC Porto",
   }),
   (questionNine = {
     question: "Which country scored the first goal in the UEFA Nations League?",
-    answers: [
-      "San Marino",
-      "Georgia",
-      "Italy",
-      "Swiss",
-    ],
+    answers: ["San Marino", "Georgia", "Italy", "Swiss"],
     correctAnswer: "Georgia",
   }),
   (questionTen = {
     question: "What was the name of the 2010 World Cup Ball?",
-    answers: [
-      "Waka-Waka",
-      "Jabulani",
-      "AfricaBall",
-      "Mandela",
-    ],
+    answers: ["Waka-Waka", "Jabulani", "AfricaBall", "Mandela"],
     correctAnswer: "Jabulani",
+  }),
+  (questionEleven = {
+    question: "Which of these players has won the UCL?",
+    answers: ["Ronaldo Nazario", "Deco", "Buffon", "Cannavaro"],
+    correctAnswer: "Deco",
+  }),
+  (questionTwelve = {
+    question: "Who was the first Italian manager to win the Premier League?",
+    answers: ["Roberto Mancini", "Antonio Conte", "Claudio Ranieri", "Carlo Ancelotti"],
+    correctAnswer: "Carlo Ancelotti",
+  }),
+  (questionThirthteen = {
+    question: "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
+    answers: ["George Best", "Wayne Rooney", "Eric Cantona", "Michael Owen"],
+    correctAnswer: "George Best",
   }),
 ];
 
@@ -126,8 +125,21 @@ function incorrectAnswer() {
   listEl.textContent = "";
   console.log("You are fucking not correct");
   answerOutputEl.textContent = "Wrong Answer";
-  feedBackAnswer.textContent = "Correct Answer: " + questionsArray[arrayindex].correctAnswer;
+  feedBackAnswer.textContent =
+    "Correct Answer: " + questionsArray[arrayindex].correctAnswer;
   wrongAnswers++;
+  questionsArray.splice(arrayindex, 1);
+  setTimeout(diplayQuestion, 3500);
+}
+
+function timesUp() {
+  clearInterval(timeInterval);
+  console.log("Times Up");
+  wrongAnswers++;
+  listEl.textContent = "";
+  answerOutputEl.textContent = "Time's Up";
+  feedBackAnswer.textContent =
+    "Correct Answer: " + questionsArray[arrayindex].correctAnswer;
   questionsArray.splice(arrayindex, 1);
   setTimeout(diplayQuestion, 3500);
 }
@@ -142,7 +154,7 @@ function gameOver() {
   answerOutputEl.textContent = "";
   gameOverText.textContent = "Game Over";
   resetGame.textContent = "Reset Game";
-  score.textContent = "Final Score: " + (rightAnswers) / 10 * 100;
+  score.textContent = "Final Score: " + (rightAnswers / 10) * 100;
   mainSection.append(score);
   mainSection.append(gameOverText);
   mainSection.append(resetGame);
@@ -165,10 +177,7 @@ function countdown() {
       timeLeft--;
       timeEl.textContent = timeLeft + " Second Left.";
     } else {
-      wrongAnswers++;
-      clearInterval(timeInterval);
-      questionsArray.splice(arrayindex, 1);
-      setTimeout(diplayQuestion, 3500);
+      timesUp();
     }
   }, 1000); // 1000 milliseconds
   timeEl.textContent = timeLeft + " Seconds Left.";
@@ -179,18 +188,21 @@ function startQuiz() {
   mainImage.setAttribute("class", "hidden");
   h1Text.setAttribute("class", "hidden");
   questionsArray = Array.from(questions);
+  qCounter = 0;
   diplayQuestion();
 }
 
 function diplayQuestion() {
   countdown();
+  qCounter++;
+  console.log(qCounter);
   score.textContent = "";
   answerOutputEl.textContent = "";
   feedBackAnswer.textContent = "";
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (questionsArray.length < 1) {
+  if (qCounter > 10) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);
@@ -213,33 +225,33 @@ function diplayQuestion() {
     answersList[0].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent;
       if (selectedAnswer === questionsArray[arrayindex].correctAnswer) {
-        correctAnswer()
+        correctAnswer();
       } else {
-        incorrectAnswer()
+        incorrectAnswer();
       }
     });
     answersList[1].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent;
       if (selectedAnswer === questionsArray[arrayindex].correctAnswer) {
-        correctAnswer()
+        correctAnswer();
       } else {
-        incorrectAnswer()
+        incorrectAnswer();
       }
     });
     answersList[2].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent;
       if (selectedAnswer === questionsArray[arrayindex].correctAnswer) {
-        correctAnswer()
+        correctAnswer();
       } else {
-        incorrectAnswer()
+        incorrectAnswer();
       }
     });
     answersList[3].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent;
       if (selectedAnswer === questionsArray[arrayindex].correctAnswer) {
-        correctAnswer()
+        correctAnswer();
       } else {
-        incorrectAnswer()
+        incorrectAnswer();
       }
     });
   }
