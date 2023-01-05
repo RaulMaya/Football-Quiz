@@ -6,11 +6,14 @@ var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
 var listEl = document.createElement("ul");
 var answerOutputEl = document.createElement("div")
+var gameOverText =  document.createElement("p");
+var resetGame =  document.createElement("button");
+
 
 mainSection.append(timeEl);
 mainSection.append(answerOutputEl);
 
-var timeLeft, timeInterval, arrayindex;
+var timeLeft, timeInterval, arrayindex, questionsArray;
 var rightAnswers = 0;
 var wrongAnswers = 0;
 
@@ -83,24 +86,37 @@ function startQuiz() {
   startBtn.setAttribute("class", "hidden");
   mainImage.setAttribute("class", "hidden");
   h1Text.setAttribute("class", "hidden");
+  questionsArray = Array.from(questions);
   diplayQuestion();
 }
 
 function diplayQuestion() {
   countdown();
-  console.log(questions)
-  if (questions.length < 1) {
+  gameOverText.classList.add('hidden')
+  resetGame.classList.add('hidden')
+  console.log(questionsArray.length)
+  if (questionsArray.length < 1) {
     clearInterval(timeInterval);
-    mainSection.setAttribute("class", "hidden");
+    gameOverText.classList.remove('hidden')
+    resetGame.classList.remove('hidden')
+    h2Text.textContent = "";
+    listEl.textContent = "";
+    timeEl.textContent = "";
+    answerOutputEl.textContent = "";
+    gameOverText.textContent = "Game Over";
+    resetGame.textContent = "Reset Game";
+    mainSection.append(gameOverText);
+    mainSection.append(resetGame);
+    resetGame.addEventListener("click", startQuiz)
     console.log(rightAnswers);
     console.log(wrongAnswers);
     console.log("Game Over");
   } else { 
-    arrayindex = Math.floor(Math.random() * questions.length);
+    arrayindex = Math.floor(Math.random() * questionsArray.length);
     console.log(arrayindex);
-    h2Text.textContent = questions[arrayindex].question;
+    h2Text.textContent = questionsArray[arrayindex].question;
     listEl.textContent = "";
-    for (item of questions[arrayindex].answers) {
+    for (item of questionsArray[arrayindex].answers) {
       console.log(item)
       var listItem =  document.createElement("li");
       var answerBtn =  document.createElement("button");
@@ -117,71 +133,72 @@ function diplayQuestion() {
     console.log(answersList);
     answersList[0].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent
-      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      if(selectedAnswer === questionsArray[arrayindex].correctAnswer) {
         console.log("Correct Answer");
         answerOutputEl.textContent = "Great! Correct Answer!";
         rightAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       } else {
         console.log("You are fucking not correct");
+        answerOutputEl.textContent = "Wrong Answer";
         wrongAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       }
     })
     answersList[1].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent
-      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      if(selectedAnswer === questionsArray[arrayindex].correctAnswer) {
         console.log("Correct Answer");
         answerOutputEl.textContent = "Great! Correct Answer!";
         rightAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       } else {
         console.log("You are fucking not correct");
         answerOutputEl.textContent = "Wrong Answer";
         wrongAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       }
     })
     answersList[2].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent
-      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      if(selectedAnswer === questionsArray[arrayindex].correctAnswer) {
         console.log("Correct Answer");
         answerOutputEl.textContent = "Great! Correct Answer!";
         rightAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       } else {
         console.log("You are fucking not correct");
         answerOutputEl.textContent = "Wrong Answer";
         wrongAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       }
     })
     answersList[3].addEventListener("click", function () {
       var selectedAnswer = this.attributes.id.textContent
-      if(selectedAnswer === questions[arrayindex].correctAnswer) {
+      if(selectedAnswer === questionsArray[arrayindex].correctAnswer) {
         console.log("Correct Answer");
         answerOutputEl.textContent = "Great! Correct Answer!";
         rightAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       } else {
         console.log("You are fucking not correct");
         answerOutputEl.textContent = "Wrong Answer";
         wrongAnswers++
-        questions.splice(arrayindex, 1);
+        questionsArray.splice(arrayindex, 1);
         clearInterval(timeInterval);
         diplayQuestion();
       }
