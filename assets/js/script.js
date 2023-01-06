@@ -2,6 +2,8 @@ var startBtn = document.getElementById("start-quiz-button");
 var mainImage = document.querySelector("img");
 var h1Text = document.querySelector("h1");
 var mainSection = document.querySelector("section");
+
+
 var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
 var listEl = document.createElement("ul");
@@ -10,6 +12,8 @@ var gameOverText = document.createElement("p");
 var resetGame = document.createElement("button");
 var feedBackAnswer = document.createElement("p");
 var score = document.createElement("p");
+var inputHighScore = document.createElement("input");
+var submitHS = document.createElement("button");
 
 mainSection.append(h2Text);
 mainSection.append(listEl);
@@ -103,10 +107,35 @@ var questions = [
     answers: ["Roberto Mancini", "Antonio Conte", "Claudio Ranieri", "Carlo Ancelotti"],
     correctAnswer: "Carlo Ancelotti",
   }),
-  (questionThirthteen = {
+  (questionThirteen = {
     question: "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
     answers: ["George Best", "Wayne Rooney", "Eric Cantona", "Michael Owen"],
     correctAnswer: "George Best",
+  }),
+  (questionFourteen = {
+    question: "Which player scored the fastest hat-trick in the Premier League?",
+    answers: ["Heung Min Son", "Didier Drogba", "Sadio Mané", "Thierry Henry"],
+    correctAnswer: "Sadio Mané",
+  }),
+  (questionFifteen = {
+    question: "Who is the Premier League's all-time top scorer?",
+    answers: ["Alan Shearer", "Wayne Rooney", "Sergio Agüero", "Harry Kane"],
+    correctAnswer: "Alan Shearer",
+  }),
+  (questionSixteen = {
+    question: "Who score the fastest goal scored in Premier League history?",
+    answers: ["Cesc Fabregas", "Mohamed Salah", "Graziano Pelle", "Shane Long"],
+    correctAnswer: "Shane Long",
+  }),
+  (questionSeventeen = {
+    question: "Which country won the first ever World Cup in 1930?",
+    answers: ["Brazil", "Uruguay", "Argentina", "Italy"],
+    correctAnswer: "Uruguay",
+  }),
+  (questionEighteen = {
+    question: "Cristiano Ronaldo is synonymous with the No.7, but what other number did he wear at Real Madrid?",
+    answers: ["77", "17", "28", "9"],
+    correctAnswer: "9",
   }),
 ];
 
@@ -147,17 +176,25 @@ function timesUp() {
 function gameOver() {
   clearInterval(timeInterval);
   gameOverText.classList.remove("hidden");
-  resetGame.classList.remove("hidden");
+
   h2Text.textContent = "";
   listEl.textContent = "";
   timeEl.textContent = "";
   answerOutputEl.textContent = "";
   gameOverText.textContent = "Game Over";
   resetGame.textContent = "Reset Game";
+  submitHS.textContent = "Submit";
   score.textContent = "Final Score: " + (rightAnswers / 10) * 100;
-  mainSection.append(score);
   mainSection.append(gameOverText);
+  mainSection.append(score);
+  mainSection.append(inputHighScore);
+  mainSection.append(submitHS);
   mainSection.append(resetGame);
+  submitHS.addEventListener("click", function() {
+    submitHS.classList.add("hidden");
+    inputHighScore.classList.add("hidden");
+    resetGame.classList.remove("hidden");
+  })
   resetGame.addEventListener("click", startQuiz);
   console.log(rightAnswers);
   console.log(wrongAnswers);
@@ -202,7 +239,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 10) {
+  if (qCounter > 3) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);
