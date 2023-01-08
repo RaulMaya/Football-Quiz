@@ -211,6 +211,13 @@ function timesUp() {
   setTimeout(diplayQuestion, 3500);
 }
 
+function settingOnStorage() {
+  userArr.push(player);
+  scoresArr.push(scoring);
+  localStorage.setItem("players", userArr);
+  localStorage.setItem("scores", scoresArr);
+}
+
 function gameOver() {
   clearInterval(timeInterval);
   var submitHS = document.createElement("button");
@@ -244,23 +251,11 @@ function gameOver() {
     var scoring = (rightAnswers / 10) * 100;
     console.log(players, scores);
     if (players === null) {
-      console.log("empty");
-      userArr.push(player);
-      scoresArr.push(scoring);
-      localStorage.setItem("players", userArr);
-      localStorage.setItem("scores", scoresArr);
+      settingOnStorage()
     } else {
-      console.log(players);
-      console.log(scores);
       userArr = players.split(",");
       scoresArr = scores.split(",");
-      userArr.push(player);
-      console.log(scoring)
-      scoresArr.push(scoring);
-      console.log(userArr);
-      console.log(scoresArr);
-      localStorage.setItem("players", userArr);
-      localStorage.setItem("scores", scoresArr);
+      settingOnStorage()
     }
     urName.classList.add("hidden");
     submitHS.classList.add("hidden");
