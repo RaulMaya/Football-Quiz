@@ -19,6 +19,7 @@ var startMenu = document.createElement("button");
 var clearHighScores = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
+var noHighScores = document.createElement("p")
 
 inputHighScore.setAttribute("id", "highScoreName");
 
@@ -450,30 +451,53 @@ function diplayQuestion() {
 }
 
 function watchScores() {
-  mainSection.setAttribute("class", "hidden");
-  startMenu.classList.remove("hidden");
-  highscoreTable.remove();
-  highscoreTable = document.createElement("table");
-  var highScoreSection = document.createElement("section");
-  highScoreSection.append(highscoreTable);
-  main.append(highScoreSection);
-  clearHighScores.textContent = "Clear High Scores";
-  startMenu.textContent = "Start Menu";
-  main.append(startMenu);
-  main.append(clearHighScores);
   var players = localStorage.getItem("players");
   var scores = localStorage.getItem("scores");
-  userArr = players.split(",");
-  scoresArr = scores.split(",");
-  startMenu.addEventListener("click", function () {
-    location.reload();
-  });
-  clearHighScores.addEventListener("click", function () {
-    localStorage.clear();
-    watchScores();
-  });
-  sortingScores()
-  tableGeneration();
+  if (players === null) {
+    mainSection.setAttribute("class", "hidden");
+    startMenu.classList.remove("hidden");
+    highscoreTable.remove();
+    var highScoreSection = document.createElement("section");
+    
+    main.append(highScoreSection);
+    noHighScores.textContent = "No High Scores Registered";
+    clearHighScores.textContent = "Clear High Scores";
+    startMenu.textContent = "Start Menu";
+    highScoreSection.append(noHighScores);
+    highScoreSection.append(startMenu);
+    highScoreSection.append(clearHighScores);
+    startMenu.addEventListener("click", function () {
+      location.reload();
+    });
+    clearHighScores.addEventListener("click", function () {
+      localStorage.clear();
+      watchScores();
+    });
+  } else {
+    mainSection.setAttribute("class", "hidden");
+    startMenu.classList.remove("hidden");
+    highscoreTable.remove();
+    highscoreTable = document.createElement("table");
+    var highScoreSection = document.createElement("section");
+    highScoreSection.append(highscoreTable);
+    main.append(highScoreSection);
+    clearHighScores.textContent = "Clear High Scores";
+    startMenu.textContent = "Start Menu";
+    main.append(startMenu);
+    main.append(clearHighScores);
+    userArr = players.split(",");
+    scoresArr = scores.split(",");
+    startMenu.addEventListener("click", function () {
+      location.reload();
+    });
+    clearHighScores.addEventListener("click", function () {
+      localStorage.clear();
+      watchScores();
+    });
+    sortingScores();
+    tableGeneration();
+  }
+
 }
 
 startBtn.addEventListener("click", startQuiz);

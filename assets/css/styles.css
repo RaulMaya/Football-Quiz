@@ -6,6 +6,10 @@
   font-family: 'Anybody', cursive;
 }
 
+body {
+  background-color: #00ce7f;
+}
+
 nav {
   padding: 1rem;
 }
