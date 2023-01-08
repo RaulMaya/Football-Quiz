@@ -16,6 +16,7 @@ var score = document.createElement("p");
 var urName = document.createElement("p");
 var resetGame = document.createElement("button");
 var startMenu = document.createElement("button");
+var clearHighScores = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
 
@@ -36,6 +37,7 @@ var timeLeft,
   wrongAnswers;
 var userArr = [];
 var scoresArr = [];
+var sortable = [];
 
 //localStorage.clear();
 
@@ -223,7 +225,7 @@ function timesUp() {
 
 function settingOnStorage() {
   var player = document.querySelector("#highScoreName").value;
-  var scoring = (rightAnswers / 10) * 100;
+  var scoring = parseInt((rightAnswers / 10) * 100);
   userArr.push(player);
   scoresArr.push(scoring);
   localStorage.setItem("players", userArr);
@@ -231,7 +233,8 @@ function settingOnStorage() {
 }
 
 function tableGeneration() {
-  for (var i = 0; i <= userArr.length; i++) {
+  console.log(sortable[0][0]);
+  for (var i = 0; i < sortable.length; i++) {
     var tableRow = document.createElement("tr");
     if (i === 0) {
       var tableHeaderUser = document.createElement("th");
@@ -243,8 +246,8 @@ function tableGeneration() {
       var firstTableRow = document.createElement("tr");
       var tableUser = document.createElement("td");
       var tableScore = document.createElement("td");
-      tableUser.textContent = userArr[i];
-      tableScore.textContent = scoresArr[i];
+      tableUser.textContent = sortable[i][0];
+      tableScore.textContent = sortable[i][1];
       firstTableRow.append(tableUser);
       firstTableRow.append(tableScore);
       highscoreTable.append(tableRow);
@@ -252,13 +255,39 @@ function tableGeneration() {
     } else {
       var tableUser = document.createElement("td");
       var tableScore = document.createElement("td");
-      tableUser.textContent = userArr[i];
-      tableScore.textContent = scoresArr[i];
+      tableUser.textContent = sortable[i][0];
+      tableScore.textContent = sortable[i][1];
       tableRow.append(tableUser);
       tableRow.append(tableScore);
       highscoreTable.append(tableRow);
     }
   }
+}
+
+function sortingScores() {
+  var scoresObj = {};
+  sortable = [];
+  console.log(sortable);
+  userArr.forEach((element, index) => {
+    scoresObj[element] = scoresArr[index];
+  });
+  console.log(scoresObj);
+
+  for (var indScores in scoresObj) {
+    sortable.push([indScores, scoresObj[indScores]]);
+  }
+  sortable.sort(function (a, b) {
+    if (a[1] == b[1]) {
+      if (a[0] === b[0]) {
+        return 0;
+      } else {
+        return a[0] < b[0] ? -1 : 1;
+      }
+    } else {
+      return a[1] < b[1] ? 1 : -1;
+    }
+  });
+  console.log(sortable);
 }
 
 function gameOver() {
@@ -298,11 +327,13 @@ function gameOver() {
     console.log(players, scores);
     if (players === null) {
       settingOnStorage();
+      sortingScores();
       tableGeneration();
     } else {
       userArr = players.split(",");
       scoresArr = scores.split(",");
       settingOnStorage();
+      sortingScores();
       tableGeneration();
     }
 
@@ -313,8 +344,8 @@ function gameOver() {
     startMenu.classList.remove("hidden");
   });
   resetGame.addEventListener("click", startQuiz);
-  startMenu.addEventListener('click', function () {
-    location.reload()
+  startMenu.addEventListener("click", function () {
+    location.reload();
   });
   console.log(rightAnswers);
   console.log(wrongAnswers);
@@ -344,11 +375,12 @@ function startQuiz() {
   startBtn.setAttribute("class", "hidden");
   mainImage.setAttribute("class", "hidden");
   h1Text.setAttribute("class", "hidden");
+  startMenu.classList.add("hidden");
   questionsArray = Array.from(questions);
   rightAnswers = 0;
   wrongAnswers = 0;
   qCounter = 0;
-  highscoreTable.remove()
+  highscoreTable.remove();
   diplayQuestion();
 }
 
@@ -420,22 +452,29 @@ function diplayQuestion() {
 function watchScores() {
   mainSection.setAttribute("class", "hidden");
   startMenu.classList.remove("hidden");
-  highscoreTable.remove()
+  highscoreTable.remove();
   highscoreTable = document.createElement("table");
   var highScoreSection = document.createElement("section");
   highScoreSection.append(highscoreTable);
   main.append(highScoreSection);
+  clearHighScores.textContent = "Clear High Scores";
   startMenu.textContent = "Start Menu";
   main.append(startMenu);
+  main.append(clearHighScores);
   var players = localStorage.getItem("players");
   var scores = localStorage.getItem("scores");
   userArr = players.split(",");
   scoresArr = scores.split(",");
-  startMenu.addEventListener('click', function () {
-    location.reload()
+  startMenu.addEventListener("click", function () {
+    location.reload();
   });
+  clearHighScores.addEventListener("click", function () {
+    localStorage.clear();
+    watchScores();
+  });
+  sortingScores()
   tableGeneration();
 }
 
 startBtn.addEventListener("click", startQuiz);
-highscores.addEventListener("click", watchScores)
+highscores.addEventListener("click", watchScores);
