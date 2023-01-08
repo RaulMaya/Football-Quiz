@@ -8,11 +8,14 @@ var h2Text = document.createElement("h2");
 var listEl = document.createElement("ul");
 var answerOutputEl = document.createElement("div");
 var gameOverText = document.createElement("p");
-var resetGame = document.createElement("button");
+
 var feedBackAnswer = document.createElement("p");
 var score = document.createElement("p");
+var urName = document.createElement("p");
+var resetGame = document.createElement("button");
 var inputHighScore = document.createElement("input");
-var submitHS = document.createElement("button");
+
+inputHighScore.setAttribute("id", "highScoreName");
 
 mainSection.append(h2Text);
 mainSection.append(listEl);
@@ -20,9 +23,11 @@ mainSection.append(answerOutputEl);
 mainSection.append(feedBackAnswer);
 mainSection.append(timeEl);
 
-var timeLeft, timeInterval, arrayindex, questionsArray, qCounter;
-var rightAnswers = 0;
-var wrongAnswers = 0;
+var timeLeft, timeInterval, arrayindex, questionsArray, qCounter, rightAnswers, wrongAnswers;
+var userArr = [];
+var scoresArr = [];
+
+localStorage.clear();
 
 var questions = [
   (qOne = {
@@ -145,20 +150,22 @@ var questions = [
     correctAnswer: "9",
   }),
   (qNineteen = {
-    question:
-      "Who was the first goalkeeper to score a Premier League goal?",
-    answers: ["Petr Cech", "Edwin Van Der Sar", "Peter Schmeichel", "David Seaman"],
+    question: "Who was the first goalkeeper to score a Premier League goal?",
+    answers: [
+      "Petr Cech",
+      "Edwin Van Der Sar",
+      "Peter Schmeichel",
+      "David Seaman",
+    ],
     correctAnswer: "Peter Schmeichel",
   }),
   (qTwenty = {
-    question:
-      "Which of these teams is not from London?",
+    question: "Which of these teams is not from London?",
     answers: ["Arsenal", "Brentford FC", "Crystal Palace", "Watford"],
     correctAnswer: "Watford",
   }),
   (qTwentyOne = {
-    question:
-      "Which of these teams is not from Madrid?",
+    question: "Which of these teams is not from Madrid?",
     answers: ["CF Fuenlabrada", "CD Leganés", "CA Osasuna", "Real Madrid"],
     correctAnswer: "CA Osasuna",
   }),
@@ -206,8 +213,13 @@ function timesUp() {
 
 function gameOver() {
   clearInterval(timeInterval);
-  gameOverText.classList.remove("hidden");
+  var submitHS = document.createElement("button");
 
+  gameOverText.classList.remove("hidden");
+  urName.classList.remove("hidden");
+  submitHS.classList.remove("hidden");
+  inputHighScore.classList.remove("hidden");
+  resetGame.classList.add("hidden");
   h2Text.textContent = "";
   listEl.textContent = "";
   timeEl.textContent = "";
@@ -215,13 +227,42 @@ function gameOver() {
   gameOverText.textContent = "Game Over";
   resetGame.textContent = "Reset Game";
   submitHS.textContent = "Submit";
+  urName.textContent = "Enter Your Name";
   score.textContent = "Final Score: " + (rightAnswers / 10) * 100;
   mainSection.append(gameOverText);
   mainSection.append(score);
+  mainSection.append(urName);
   mainSection.append(inputHighScore);
   mainSection.append(submitHS);
   mainSection.append(resetGame);
+  inputHighScore.value = "";
   submitHS.addEventListener("click", function () {
+    console.log(inputHighScore)
+    var players = localStorage.getItem("players");
+    var scores = localStorage.getItem("scores");
+    var player = document.querySelector("#highScoreName").value;
+    var scoring = (rightAnswers / 10) * 100;
+    console.log(players, scores);
+    if (players === null) {
+      console.log("empty");
+      userArr.push(player);
+      scoresArr.push(scoring);
+      localStorage.setItem("players", userArr);
+      localStorage.setItem("scores", scoresArr);
+    } else {
+      console.log(players);
+      console.log(scores);
+      userArr = players.split(",");
+      scoresArr = scores.split(",");
+      userArr.push(player);
+      console.log(scoring)
+      scoresArr.push(scoring);
+      console.log(userArr);
+      console.log(scoresArr);
+      localStorage.setItem("players", userArr);
+      localStorage.setItem("scores", scoresArr);
+    }
+    urName.classList.add("hidden");
     submitHS.classList.add("hidden");
     inputHighScore.classList.add("hidden");
     resetGame.classList.remove("hidden");
@@ -256,6 +297,8 @@ function startQuiz() {
   mainImage.setAttribute("class", "hidden");
   h1Text.setAttribute("class", "hidden");
   questionsArray = Array.from(questions);
+  rightAnswers = 0;
+  wrongAnswers = 0;
   qCounter = 0;
   diplayQuestion();
 }
@@ -270,7 +313,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 3) {
+  if (qCounter > 1) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);
