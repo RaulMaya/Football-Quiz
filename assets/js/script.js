@@ -2,6 +2,7 @@ var startBtn = document.getElementById("start-quiz-button");
 var mainImage = document.querySelector("img");
 var h1Text = document.querySelector("h1");
 var mainSection = document.querySelector("section");
+var highscores = document.querySelector("#highscores")
 
 var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
@@ -14,6 +15,7 @@ var score = document.createElement("p");
 var urName = document.createElement("p");
 var resetGame = document.createElement("button");
 var inputHighScore = document.createElement("input");
+var highscoreTable = document.createElement("table");
 
 inputHighScore.setAttribute("id", "highScoreName");
 
@@ -23,11 +25,17 @@ mainSection.append(answerOutputEl);
 mainSection.append(feedBackAnswer);
 mainSection.append(timeEl);
 
-var timeLeft, timeInterval, arrayindex, questionsArray, qCounter, rightAnswers, wrongAnswers;
+var timeLeft,
+  timeInterval,
+  arrayindex,
+  questionsArray,
+  qCounter,
+  rightAnswers,
+  wrongAnswers;
 var userArr = [];
 var scoresArr = [];
 
-localStorage.clear();
+//localStorage.clear();
 
 var questions = [
   (qOne = {
@@ -212,16 +220,49 @@ function timesUp() {
 }
 
 function settingOnStorage() {
+  var player = document.querySelector("#highScoreName").value;
+  var scoring = (rightAnswers / 10) * 100;
   userArr.push(player);
   scoresArr.push(scoring);
   localStorage.setItem("players", userArr);
   localStorage.setItem("scores", scoresArr);
 }
 
+function tableGeneration() {
+  for (var i = 0; i <= userArr.length; i++) {
+    var tableRow = document.createElement("tr");
+    if (i === 0) {
+      var tableHeaderUser = document.createElement("th");
+      var tableHeaderScore = document.createElement("th");
+      tableHeaderUser.textContent = "Player Name";
+      tableHeaderScore.textContent = "Player Score";
+      tableRow.append(tableHeaderUser);
+      tableRow.append(tableHeaderScore);
+      var firstTableRow = document.createElement("tr");
+      var tableUser = document.createElement("td");
+      var tableScore = document.createElement("td");
+      tableUser.textContent = userArr[i];
+      tableScore.textContent = scoresArr[i];
+      firstTableRow.append(tableUser);
+      firstTableRow.append(tableScore);
+      highscoreTable.append(tableRow);
+      highscoreTable.append(firstTableRow);
+    } else {
+      var tableUser = document.createElement("td");
+      var tableScore = document.createElement("td");
+      tableUser.textContent = userArr[i];
+      tableScore.textContent = scoresArr[i];
+      tableRow.append(tableUser);
+      tableRow.append(tableScore);
+      highscoreTable.append(tableRow);
+    }
+  }
+}
+
 function gameOver() {
   clearInterval(timeInterval);
   var submitHS = document.createElement("button");
-
+  highscoreTable = document.createElement("table");
   gameOverText.classList.remove("hidden");
   urName.classList.remove("hidden");
   submitHS.classList.remove("hidden");
@@ -242,21 +283,24 @@ function gameOver() {
   mainSection.append(inputHighScore);
   mainSection.append(submitHS);
   mainSection.append(resetGame);
+  mainSection.append(highscoreTable);
   inputHighScore.value = "";
   submitHS.addEventListener("click", function () {
-    console.log(inputHighScore)
+    console.log(inputHighScore);
+
     var players = localStorage.getItem("players");
     var scores = localStorage.getItem("scores");
-    var player = document.querySelector("#highScoreName").value;
-    var scoring = (rightAnswers / 10) * 100;
     console.log(players, scores);
     if (players === null) {
-      settingOnStorage()
+      settingOnStorage();
+      tableGeneration();
     } else {
       userArr = players.split(",");
       scoresArr = scores.split(",");
-      settingOnStorage()
+      settingOnStorage();
+      tableGeneration();
     }
+
     urName.classList.add("hidden");
     submitHS.classList.add("hidden");
     inputHighScore.classList.add("hidden");
@@ -295,6 +339,7 @@ function startQuiz() {
   rightAnswers = 0;
   wrongAnswers = 0;
   qCounter = 0;
+  highscoreTable.remove()
   diplayQuestion();
 }
 
@@ -363,4 +408,20 @@ function diplayQuestion() {
   }
 }
 
+function watchScores() {
+  console.log("SCORES")
+  startBtn.setAttribute("class", "hidden");
+  mainImage.setAttribute("class", "hidden");
+  h1Text.setAttribute("class", "hidden");
+  highscoreTable.remove()
+  highscoreTable = document.createElement("table");
+  mainSection.append(highscoreTable);
+  var players = localStorage.getItem("players");
+  var scores = localStorage.getItem("scores");
+  userArr = players.split(",");
+  scoresArr = scores.split(",");
+  tableGeneration();
+}
+
 startBtn.addEventListener("click", startQuiz);
+highscores.addEventListener("click", watchScores)
