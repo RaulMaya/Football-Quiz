@@ -3,7 +3,6 @@ var mainImage = document.querySelector("img");
 var h1Text = document.querySelector("h1");
 var mainSection = document.querySelector("section");
 
-
 var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
 var listEl = document.createElement("ul");
@@ -26,7 +25,7 @@ var rightAnswers = 0;
 var wrongAnswers = 0;
 
 var questions = [
-  (questionOne = {
+  (qOne = {
     question: "Who has scored the most goals in World Cup competitions?",
     answers: [
       "David Villa",
@@ -36,12 +35,12 @@ var questions = [
     ],
     correctAnswer: "Miroslav Klose",
   }),
-  (questionTwo = {
+  (qTwo = {
     question: "What country does Aubameyang play for?",
     answers: ["Gabón", "Etiophia", "Egypt", "Guinea"],
     correctAnswer: "Gabón",
   }),
-  (questionThree = {
+  (qThree = {
     question: "Who score the only goal of the EURO 2016 final? ",
     answers: [
       "Cristiano Ronaldo",
@@ -51,7 +50,7 @@ var questions = [
     ],
     correctAnswer: "Ederzito António",
   }),
-  (questionFour = {
+  (qFour = {
     question: "Who won the Golden Ball of South Africa 2010 World Cup?",
     answers: [
       "Lionel Messi",
@@ -61,18 +60,18 @@ var questions = [
     ],
     correctAnswer: "Diego Forlan",
   }),
-  (questionFive = {
+  (qFive = {
     question:
       "In the 2014 UCL final Real Madrid vs Atletico de Madrid, in what minute of added time did Sergio Ramos tie the game?",
     answers: ["91", "95", "92", "93"],
     correctAnswer: "93",
   }),
-  (questionSix = {
+  (qSix = {
     question: "Who won the UCL 96-97?",
     answers: ["Juventus", "Borussia Dortmund", "FC Porto", "Ajax FC"],
     correctAnswer: "Borussia Dortmund",
   }),
-  (questionSeven = {
+  (qSeven = {
     question: "Which player didn’t play for Manchester United:",
     answers: [
       "Troy Deeney",
@@ -82,60 +81,92 @@ var questions = [
     ],
     correctAnswer: "Troy Deeney",
   }),
-  (questionEight = {
+  (qEight = {
     question: "With which of the following teams Jose Mourinho won the UCL?",
     answers: ["Real Madrid", "AS Monaco", "Chelsea", "FC Porto"],
     correctAnswer: "FC Porto",
   }),
-  (questionNine = {
+  (qNine = {
     question: "Which country scored the first goal in the UEFA Nations League?",
     answers: ["San Marino", "Georgia", "Italy", "Swiss"],
     correctAnswer: "Georgia",
   }),
-  (questionTen = {
+  (qTen = {
     question: "What was the name of the 2010 World Cup Ball?",
     answers: ["Waka-Waka", "Jabulani", "AfricaBall", "Mandela"],
     correctAnswer: "Jabulani",
   }),
-  (questionEleven = {
+  (qEleven = {
     question: "Which of these players has won the UCL?",
     answers: ["Ronaldo Nazario", "Deco", "Buffon", "Cannavaro"],
     correctAnswer: "Deco",
   }),
-  (questionTwelve = {
+  (qTwelve = {
     question: "Who was the first Italian manager to win the Premier League?",
-    answers: ["Roberto Mancini", "Antonio Conte", "Claudio Ranieri", "Carlo Ancelotti"],
+    answers: [
+      "Roberto Mancini",
+      "Antonio Conte",
+      "Claudio Ranieri",
+      "Carlo Ancelotti",
+    ],
     correctAnswer: "Carlo Ancelotti",
   }),
-  (questionThirteen = {
-    question: "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
+  (qThirteen = {
+    question:
+      "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
     answers: ["George Best", "Wayne Rooney", "Eric Cantona", "Michael Owen"],
     correctAnswer: "George Best",
   }),
-  (questionFourteen = {
-    question: "Which player scored the fastest hat-trick in the Premier League?",
+  (qFourteen = {
+    question:
+      "Which player scored the fastest hat-trick in the Premier League?",
     answers: ["Heung Min Son", "Didier Drogba", "Sadio Mané", "Thierry Henry"],
     correctAnswer: "Sadio Mané",
   }),
-  (questionFifteen = {
+  (qFifteen = {
     question: "Who is the Premier League's all-time top scorer?",
     answers: ["Alan Shearer", "Wayne Rooney", "Sergio Agüero", "Harry Kane"],
     correctAnswer: "Alan Shearer",
   }),
-  (questionSixteen = {
+  (qSixteen = {
     question: "Who score the fastest goal scored in Premier League history?",
     answers: ["Cesc Fabregas", "Mohamed Salah", "Graziano Pelle", "Shane Long"],
     correctAnswer: "Shane Long",
   }),
-  (questionSeventeen = {
+  (qSeventeen = {
     question: "Which country won the first ever World Cup in 1930?",
     answers: ["Brazil", "Uruguay", "Argentina", "Italy"],
     correctAnswer: "Uruguay",
   }),
-  (questionEighteen = {
-    question: "Cristiano Ronaldo is synonymous with the No.7, but what other number did he wear at Real Madrid?",
+  (qEighteen = {
+    question:
+      "Cristiano Ronaldo is synonymous with the No.7, but what other number did he wear at Real Madrid?",
     answers: ["77", "17", "28", "9"],
     correctAnswer: "9",
+  }),
+  (qNineteen = {
+    question:
+      "Who was the first goalkeeper to score a Premier League goal?",
+    answers: ["Petr Cech", "Edwin Van Der Sar", "Peter Schmeichel", "David Seaman"],
+    correctAnswer: "Peter Schmeichel",
+  }),
+  (qTwenty = {
+    question:
+      "Which of these teams is not from London?",
+    answers: ["Arsenal", "Brentford FC", "Crystal Palace", "Watford"],
+    correctAnswer: "Watford",
+  }),
+  (qTwentyOne = {
+    question:
+      "Which of these teams is not from Madrid?",
+    answers: ["CF Fuenlabrada", "CD Leganés", "CA Osasuna", "Real Madrid"],
+    correctAnswer: "CA Osasuna",
+  }),
+  (qTwentyTwo = {
+    question:
+      "After Juventus, AC Milan and Inter, with nine Scudettos, which team has won the most Serie A titles?",
+    answers: ["Genoa", "Napoli", "Torino", "Atalanta"],
+    correctAnswer: "Genoa",
   }),
 ];
 
@@ -190,11 +221,11 @@ function gameOver() {
   mainSection.append(inputHighScore);
   mainSection.append(submitHS);
   mainSection.append(resetGame);
-  submitHS.addEventListener("click", function() {
+  submitHS.addEventListener("click", function () {
     submitHS.classList.add("hidden");
     inputHighScore.classList.add("hidden");
     resetGame.classList.remove("hidden");
-  })
+  });
   resetGame.addEventListener("click", startQuiz);
   console.log(rightAnswers);
   console.log(wrongAnswers);
