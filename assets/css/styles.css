@@ -50,3 +50,7 @@ button {
 #start-quiz-button {
   margin-top: 1rem;
 }
+
+#highscores {
+  cursor: pointer;
+}

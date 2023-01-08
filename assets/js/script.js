@@ -2,7 +2,8 @@ var startBtn = document.getElementById("start-quiz-button");
 var mainImage = document.querySelector("img");
 var h1Text = document.querySelector("h1");
 var mainSection = document.querySelector("section");
-var highscores = document.querySelector("#highscores")
+var highscores = document.querySelector("#highscores");
+var main = document.querySelector("main");
 
 var timeEl = document.createElement("p");
 var h2Text = document.createElement("h2");
@@ -14,6 +15,7 @@ var feedBackAnswer = document.createElement("p");
 var score = document.createElement("p");
 var urName = document.createElement("p");
 var resetGame = document.createElement("button");
+var startMenu = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
 
@@ -268,12 +270,14 @@ function gameOver() {
   submitHS.classList.remove("hidden");
   inputHighScore.classList.remove("hidden");
   resetGame.classList.add("hidden");
+  startMenu.classList.add("hidden");
   h2Text.textContent = "";
   listEl.textContent = "";
   timeEl.textContent = "";
   answerOutputEl.textContent = "";
   gameOverText.textContent = "Game Over";
   resetGame.textContent = "Reset Game";
+  startMenu.textContent = "Start Menu";
   submitHS.textContent = "Submit";
   urName.textContent = "Enter Your Name";
   score.textContent = "Final Score: " + (rightAnswers / 10) * 100;
@@ -283,6 +287,7 @@ function gameOver() {
   mainSection.append(inputHighScore);
   mainSection.append(submitHS);
   mainSection.append(resetGame);
+  mainSection.append(startMenu);
   mainSection.append(highscoreTable);
   inputHighScore.value = "";
   submitHS.addEventListener("click", function () {
@@ -305,8 +310,12 @@ function gameOver() {
     submitHS.classList.add("hidden");
     inputHighScore.classList.add("hidden");
     resetGame.classList.remove("hidden");
+    startMenu.classList.remove("hidden");
   });
   resetGame.addEventListener("click", startQuiz);
+  startMenu.addEventListener('click', function () {
+    location.reload()
+  });
   console.log(rightAnswers);
   console.log(wrongAnswers);
   console.log("Game Over");
@@ -409,17 +418,22 @@ function diplayQuestion() {
 }
 
 function watchScores() {
-  console.log("SCORES")
-  startBtn.setAttribute("class", "hidden");
-  mainImage.setAttribute("class", "hidden");
-  h1Text.setAttribute("class", "hidden");
+  mainSection.setAttribute("class", "hidden");
+  startMenu.classList.remove("hidden");
   highscoreTable.remove()
   highscoreTable = document.createElement("table");
-  mainSection.append(highscoreTable);
+  var highScoreSection = document.createElement("section");
+  highScoreSection.append(highscoreTable);
+  main.append(highScoreSection);
+  startMenu.textContent = "Start Menu";
+  main.append(startMenu);
   var players = localStorage.getItem("players");
   var scores = localStorage.getItem("scores");
   userArr = players.split(",");
   scoresArr = scores.split(",");
+  startMenu.addEventListener('click', function () {
+    location.reload()
+  });
   tableGeneration();
 }
 
