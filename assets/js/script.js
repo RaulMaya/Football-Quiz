@@ -53,11 +53,13 @@ var questions = [
       "Miroslav Klose",
     ],
     correctAnswer: "Miroslav Klose",
+    img: "../images/qImages/ans1.png",
   }),
   (qTwo = {
     question: "What country does Aubameyang play for?",
     answers: ["Gabón", "Etiophia", "Egypt", "Guinea"],
     correctAnswer: "Gabón",
+    img: "../images/qImages/ans1.png",
   }),
   (qThree = {
     question: "Who score the only goal of the EURO 2016 final? ",
@@ -68,6 +70,7 @@ var questions = [
       "Rafael Guerreiro",
     ],
     correctAnswer: "Ederzito António",
+    img: "../images/qImages/ans1.png",
   }),
   (qFour = {
     question: "Who won the Golden Ball of South Africa 2010 World Cup?",
@@ -78,17 +81,20 @@ var questions = [
       "Wesley Sneijder",
     ],
     correctAnswer: "Diego Forlan",
+    img: "../images/qImages/ans1.png",
   }),
   (qFive = {
     question:
       "In the 2014 UCL final Real Madrid vs Atletico de Madrid, in what minute of added time did Sergio Ramos tie the game?",
     answers: ["91", "95", "92", "93"],
     correctAnswer: "93",
+    img: "../images/qImages/ans1.png",
   }),
   (qSix = {
     question: "Who won the UCL 96-97?",
     answers: ["Juventus", "Borussia Dortmund", "FC Porto", "Ajax FC"],
     correctAnswer: "Borussia Dortmund",
+    img: "../images/qImages/ans1.png",
   }),
   (qSeven = {
     question: "Which player didn’t play for Manchester United:",
@@ -99,26 +105,31 @@ var questions = [
       "Thomas Cleverly",
     ],
     correctAnswer: "Troy Deeney",
+    img: "../images/qImages/ans1.png",
   }),
   (qEight = {
     question: "With which of the following teams Jose Mourinho won the UCL?",
     answers: ["Real Madrid", "AS Monaco", "Chelsea", "FC Porto"],
     correctAnswer: "FC Porto",
+    img: "../images/qImages/ans1.png",
   }),
   (qNine = {
     question: "Which country scored the first goal in the UEFA Nations League?",
     answers: ["San Marino", "Georgia", "Italy", "Swiss"],
     correctAnswer: "Georgia",
+    img: "../images/qImages/ans1.png",
   }),
   (qTen = {
     question: "What was the name of the 2010 World Cup Ball?",
     answers: ["Waka-Waka", "Jabulani", "AfricaBall", "Mandela"],
     correctAnswer: "Jabulani",
+    img: "../images/qImages/ans1.png",
   }),
   (qEleven = {
     question: "Which of these players has won the UCL?",
     answers: ["Ronaldo Nazario", "Deco", "Buffon", "Cannavaro"],
     correctAnswer: "Deco",
+    img: "../images/qImages/ans1.png",
   }),
   (qTwelve = {
     question: "Who was the first Italian manager to win the Premier League?",
@@ -129,12 +140,14 @@ var questions = [
       "Carlo Ancelotti",
     ],
     correctAnswer: "Carlo Ancelotti",
+    img: "../images/qImages/ans1.png",
   }),
   (qThirteen = {
     question:
       "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
     answers: ["George Best", "Wayne Rooney", "Eric Cantona", "Michael Owen"],
     correctAnswer: "George Best",
+    img: "../images/qImages/ans1.png",
   }),
   (qFourteen = {
     question:
@@ -146,22 +159,26 @@ var questions = [
     question: "Who is the Premier League's all-time top scorer?",
     answers: ["Alan Shearer", "Wayne Rooney", "Sergio Agüero", "Harry Kane"],
     correctAnswer: "Alan Shearer",
+    img: "../images/qImages/ans1.png",
   }),
   (qSixteen = {
     question: "Who score the fastest goal scored in Premier League history?",
     answers: ["Cesc Fabregas", "Mohamed Salah", "Graziano Pelle", "Shane Long"],
     correctAnswer: "Shane Long",
+    img: "../images/qImages/ans1.png",
   }),
   (qSeventeen = {
     question: "Which country won the first ever World Cup in 1930?",
     answers: ["Brazil", "Uruguay", "Argentina", "Italy"],
     correctAnswer: "Uruguay",
+    img: "../images/qImages/ans1.png",
   }),
   (qEighteen = {
     question:
       "Cristiano Ronaldo is synonymous with the No.7, but what other number did he wear at Real Madrid?",
     answers: ["77", "17", "28", "9"],
     correctAnswer: "9",
+    img: "../images/qImages/ans1.png",
   }),
   (qNineteen = {
     question: "Who was the first goalkeeper to score a Premier League goal?",
@@ -172,6 +189,7 @@ var questions = [
       "David Seaman",
     ],
     correctAnswer: "Peter Schmeichel",
+    img: "../images/qImages/ans1.png",
   }),
   (qTwenty = {
     question: "Which of these teams is not from London?",
@@ -182,12 +200,14 @@ var questions = [
     question: "Which of these teams is not from Madrid?",
     answers: ["CF Fuenlabrada", "CD Leganés", "CA Osasuna", "Real Madrid"],
     correctAnswer: "CA Osasuna",
+    img: "../images/qImages/ans1.png",
   }),
   (qTwentyTwo = {
     question:
       "After Juventus, AC Milan and Inter, with nine Scudettos, which team has won the most Serie A titles?",
     answers: ["Genoa", "Napoli", "Torino", "Atalanta"],
     correctAnswer: "Genoa",
+    img: "../images/qImages/ans1.png",
   }),
 ];
 
@@ -367,15 +387,26 @@ function countdown() {
     // YOUR CODE HERE
     if (timeLeft > 1) {
       timeLeft--;
-      timeEl.textContent = timeLeft + " Seconds Left.";
+      timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
+      if (timeLeft > 5) {
+        var timing = document.querySelector("span");
+        timing.style.color = "#B3FFAE";
+      } else {
+        var timing = document.querySelector("span");
+        timing.style.color = "#FF0032";
+      }
     } else if (timeLeft === 1) {
       timeLeft--;
-      timeEl.textContent = timeLeft + " Second Left.";
+      timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Second Left.";
+      var timing = document.querySelector("span");
+      timing.style.color = "#CD0404";
     } else {
       timesUp();
     }
   }, 1000); // 1000 milliseconds
-  timeEl.textContent = timeLeft + " Seconds Left.";
+  timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
+  var timing = document.querySelector("span");
+  timing.style.color = "#B3FFAE";
 }
 
 function startQuiz() {
@@ -405,7 +436,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 1) {
+  if (qCounter > 10) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);

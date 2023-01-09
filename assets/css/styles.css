@@ -32,6 +32,7 @@ section {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+
 }
 
 .hidden {
@@ -68,15 +69,16 @@ input {
 
 #start-quiz-button {
   background-color: white;
-  border: 2px black solid;
   color: black;
   padding: 12px;
+
 }
 
 button {
   width: 150px;
   cursor: pointer;
   padding: 2px;
+  box-shadow: 8px 8px 16px black;
 }
 
 #highscores {
@@ -87,19 +89,26 @@ button {
 
 .questionAsked {
   margin-top: 5%;
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: white;
   text-shadow: 32px 32px 64px black;
+  padding: 12px;
 }
 
 .timer {
   margin-top: 2rem;
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: white;
   text-shadow: 32px 32px 64px black;
 }
 
-
+.multipleChoice {
+  padding: 12px 5px;
+  width: 210px;
+  background-color: white;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
 
 
 /* Background Styles */
