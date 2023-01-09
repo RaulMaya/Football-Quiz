@@ -5,13 +5,11 @@ var h3Text = document.querySelector("h3");
 var mainSection = document.querySelector("section");
 var highscores = document.querySelector("#highscores");
 var main = document.querySelector("main");
-
 var timeEl = document.createElement("p");
 var askedQuestion = document.createElement("h2");
 var listEl = document.createElement("ul");
 var answerOutputEl = document.createElement("div");
 var gameOverText = document.createElement("p");
-
 var feedBackAnswer = document.createElement("p");
 var score = document.createElement("p");
 var urName = document.createElement("p");
@@ -21,16 +19,21 @@ var clearHighScores = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
 var noHighScores = document.createElement("p");
-var answerImage = document.createElement('img');
+var answerImage = document.createElement("img");
 
 inputHighScore.setAttribute("id", "highScoreName");
 askedQuestion.setAttribute("class", "questionAsked");
-timeEl.setAttribute("class", "timer")
+timeEl.setAttribute("class", "timer");
 
 mainSection.append(askedQuestion);
 mainSection.append(listEl);
 mainSection.append(answerOutputEl);
+answerOutputEl.setAttribute("class", "ansOutput");
+gameOverText.setAttribute("class", "gameOver");
+
 mainSection.append(feedBackAnswer);
+feedBackAnswer.setAttribute("class", "feedback");
+
 mainSection.append(answerImage);
 answerImage.classList.add("hidden");
 
@@ -218,13 +221,17 @@ var questions = [
 ];
 
 //Generating a new background
-bgSelect = Math.floor(Math.random() * 20);
-console.log("bg"+bgSelect);
-body.classList.add("bg"+bgSelect)
+bgSelect = Math.floor(Math.random() * 21);
+console.log("bg" + bgSelect);
+body.classList.add("bg" + bgSelect);
 
 function correctAnswer() {
   clearInterval(timeInterval);
+  answerOutputEl.style.color = "#00FFAB";
+  answerImage.setAttribute("src", questionsArray[arrayindex].img);
+  answerImage.classList.remove("hidden");
   listEl.textContent = "";
+  timeEl.textContent = "";
   console.log("Correct Answer");
   answerOutputEl.textContent = "Great! Correct Answer!";
   rightAnswers++;
@@ -234,10 +241,12 @@ function correctAnswer() {
 
 function incorrectAnswer() {
   clearInterval(timeInterval);
-  answerImage.classList.remove("hidden");
   answerImage.setAttribute("src", questionsArray[arrayindex].img);
+  answerImage.classList.remove("hidden");
   listEl.textContent = "";
+  timeEl.textContent = "";
   console.log("You are fucking not correct");
+  answerOutputEl.style.color = "red";
   answerOutputEl.textContent = "Wrong Answer";
   feedBackAnswer.textContent =
     "Correct Answer: " + questionsArray[arrayindex].correctAnswer;
@@ -249,8 +258,12 @@ function incorrectAnswer() {
 function timesUp() {
   clearInterval(timeInterval);
   console.log("Times Up");
+  answerOutputEl.style.color = "orange";
   wrongAnswers++;
+  answerImage.setAttribute("src", questionsArray[arrayindex].img);
+  answerImage.classList.remove("hidden");
   listEl.textContent = "";
+  timeEl.textContent = "";
   answerOutputEl.textContent = "Time's Up";
   feedBackAnswer.textContent =
     "Correct Answer: " + questionsArray[arrayindex].correctAnswer;
@@ -328,11 +341,14 @@ function sortingScores() {
 function gameOver() {
   clearInterval(timeInterval);
   var submitHS = document.createElement("button");
+  submitHS.setAttribute("class", "submitBtn");
   highscoreTable = document.createElement("table");
   gameOverText.classList.remove("hidden");
   urName.classList.remove("hidden");
   submitHS.classList.remove("hidden");
   inputHighScore.classList.remove("hidden");
+  inputHighScore.setAttribute("placeholder", "Enter your name...");
+  inputHighScore.required = true;
   resetGame.classList.add("hidden");
   startMenu.classList.add("hidden");
   askedQuestion.textContent = "";
@@ -344,12 +360,13 @@ function gameOver() {
   startMenu.textContent = "Start Menu";
   submitHS.textContent = "Submit";
   urName.textContent = "Enter Your Name";
-  score.textContent = "Final Score: " + (rightAnswers / 10) * 100;
+  score.innerHTML = "Final Score: " + "<span class='finalScore'>" + (rightAnswers / 10) * 100 + "</span>";
+  score.setAttribute("class", "score");
   mainSection.append(gameOverText);
   mainSection.append(score);
   mainSection.append(urName);
   mainSection.append(inputHighScore);
-  mainSection.append(submitHS);
+  main.append(submitHS);
   mainSection.append(resetGame);
   mainSection.append(startMenu);
   mainSection.append(highscoreTable);
@@ -395,7 +412,7 @@ function countdown() {
     // YOUR CODE HERE
     if (timeLeft > 1) {
       timeLeft--;
-      timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
+      timeEl.innerHTML = "<span>" + timeLeft + "</span>" + " Seconds Left.";
       if (timeLeft > 5) {
         var timing = document.querySelector("span");
         timing.style.color = "#9CFF2E";
@@ -405,14 +422,14 @@ function countdown() {
       }
     } else if (timeLeft === 1) {
       timeLeft--;
-      timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Second Left.";
+      timeEl.innerHTML = "<span>" + timeLeft + "</span>" + " Second Left.";
       var timing = document.querySelector("span");
       timing.style.color = "#CD0404";
     } else {
       timesUp();
     }
   }, 1000); // 1000 milliseconds
-  timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
+  timeEl.innerHTML = "<span>" + timeLeft + "</span>" + " Seconds Left.";
   var timing = document.querySelector("span");
   timing.style.color = "#38E54D";
 }
@@ -432,12 +449,13 @@ function startQuiz() {
 
 function diplayQuestion() {
   countdown();
+  answerImage.setAttribute("src", "#");
   answerImage.classList.add("hidden");
-  body.classList.remove("bg"+bgSelect)
+  body.classList.remove("bg" + bgSelect);
   qCounter++;
-  bgSelect = Math.floor(Math.random() * 20);
-  console.log("bg"+bgSelect);
-  body.classList.add("bg"+bgSelect)
+  bgSelect = Math.floor(Math.random() * 21);
+  console.log("bg" + bgSelect);
+  body.classList.add("bg" + bgSelect);
   console.log(qCounter);
   score.textContent = "";
   answerOutputEl.textContent = "";
@@ -445,7 +463,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 10) {
+  if (qCounter > 1) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);

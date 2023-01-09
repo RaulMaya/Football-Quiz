@@ -49,7 +49,11 @@ ul li {
 }
 
 input {
+  margin-top: 0.5rem;
   width: 200px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 5px 7.5px;
 }
 
 .title {
@@ -88,14 +92,14 @@ button {
 }
 
 .questionAsked {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: white;
   text-shadow: 8px 8px 16px black;
   padding: 12px;
 }
 
 .timer {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 4rem;
   color: white;
   text-shadow: 8px 8px 16px black;
@@ -110,8 +114,56 @@ button {
 }
 
 img {
-  width: 400px;
+  margin-top: 1rem;
+  width: 390px;
   height: 350px;
+  box-shadow: 8px 8px 16px black;
+  border: 5px #FFE15D solid;
+}
+
+.feedback {
+  font-size: 1.75rem;
+  color: lightskyblue;
+  text-shadow: 8px 8px 16px black;
+  padding: 5px;
+}
+
+.ansOutput { 
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 8px 8px 16px black;
+  padding: 5px;
+}
+
+.gameOver {
+  font-size: 5rem;
+  font-weight: bold;
+  color: red;
+  text-shadow: 8px 8px 16px black;
+  padding: 5px;
+}
+
+.submitBtn {
+  padding: 7.5px 2.5px;
+  width: 150px;
+  background-color: white;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.score {
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 8px 8px 16px black;
+  padding-bottom: 2rem;
+}
+
+.finalScore {
+  color:#FFE15D
+}
+
+main {
+  text-align: center;
 }
 
 
@@ -194,5 +246,9 @@ img {
 
 .bg19 {
   background-image: url(../images/thanks.png);
+}
+
+.bg20 {
+  background-image: url(../images/crash.png);
 }
 
