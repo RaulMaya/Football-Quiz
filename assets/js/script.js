@@ -21,6 +21,7 @@ var clearHighScores = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
 var noHighScores = document.createElement("p");
+var answerImage = document.createElement('img');
 
 inputHighScore.setAttribute("id", "highScoreName");
 askedQuestion.setAttribute("class", "questionAsked");
@@ -30,6 +31,9 @@ mainSection.append(askedQuestion);
 mainSection.append(listEl);
 mainSection.append(answerOutputEl);
 mainSection.append(feedBackAnswer);
+mainSection.append(answerImage);
+answerImage.classList.add("hidden");
+
 mainSection.append(timeEl);
 
 var timeLeft,
@@ -53,13 +57,13 @@ var questions = [
       "Miroslav Klose",
     ],
     correctAnswer: "Miroslav Klose",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans1.png",
   }),
   (qTwo = {
     question: "What country does Aubameyang play for?",
     answers: ["Gabón", "Etiophia", "Egypt", "Guinea"],
     correctAnswer: "Gabón",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans2.png",
   }),
   (qThree = {
     question: "Who score the only goal of the EURO 2016 final? ",
@@ -70,7 +74,7 @@ var questions = [
       "Rafael Guerreiro",
     ],
     correctAnswer: "Ederzito António",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans3.png",
   }),
   (qFour = {
     question: "Who won the Golden Ball of South Africa 2010 World Cup?",
@@ -81,20 +85,20 @@ var questions = [
       "Wesley Sneijder",
     ],
     correctAnswer: "Diego Forlan",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans4.png",
   }),
   (qFive = {
     question:
       "In the 2014 UCL final Real Madrid vs Atletico de Madrid, in what minute of added time did Sergio Ramos tie the game?",
     answers: ["91", "95", "92", "93"],
     correctAnswer: "93",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans5.png",
   }),
   (qSix = {
     question: "Who won the UCL 96-97?",
     answers: ["Juventus", "Borussia Dortmund", "FC Porto", "Ajax FC"],
     correctAnswer: "Borussia Dortmund",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans6.png",
   }),
   (qSeven = {
     question: "Which player didn’t play for Manchester United:",
@@ -105,31 +109,31 @@ var questions = [
       "Thomas Cleverly",
     ],
     correctAnswer: "Troy Deeney",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans7.png",
   }),
   (qEight = {
     question: "With which of the following teams Jose Mourinho won the UCL?",
     answers: ["Real Madrid", "AS Monaco", "Chelsea", "FC Porto"],
     correctAnswer: "FC Porto",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans8.png",
   }),
   (qNine = {
     question: "Which country scored the first goal in the UEFA Nations League?",
     answers: ["San Marino", "Georgia", "Italy", "Swiss"],
     correctAnswer: "Georgia",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans9.png",
   }),
   (qTen = {
     question: "What was the name of the 2010 World Cup Ball?",
     answers: ["Waka-Waka", "Jabulani", "AfricaBall", "Mandela"],
     correctAnswer: "Jabulani",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans10.png",
   }),
   (qEleven = {
     question: "Which of these players has won the UCL?",
     answers: ["Ronaldo Nazario", "Deco", "Buffon", "Cannavaro"],
     correctAnswer: "Deco",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans11.png",
   }),
   (qTwelve = {
     question: "Who was the first Italian manager to win the Premier League?",
@@ -140,45 +144,46 @@ var questions = [
       "Carlo Ancelotti",
     ],
     correctAnswer: "Carlo Ancelotti",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans12.png",
   }),
   (qThirteen = {
     question:
       "Who was the last Manchester United player to win the Ballon d'Or before Cristiano Ronaldo?",
     answers: ["George Best", "Wayne Rooney", "Eric Cantona", "Michael Owen"],
     correctAnswer: "George Best",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans13.png",
   }),
   (qFourteen = {
     question:
       "Which player scored the fastest hat-trick in the Premier League?",
     answers: ["Heung Min Son", "Didier Drogba", "Sadio Mané", "Thierry Henry"],
     correctAnswer: "Sadio Mané",
+    img: "assets/images/qImages/ans14.png",
   }),
   (qFifteen = {
     question: "Who is the Premier League's all-time top scorer?",
     answers: ["Alan Shearer", "Wayne Rooney", "Sergio Agüero", "Harry Kane"],
     correctAnswer: "Alan Shearer",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans15.png",
   }),
   (qSixteen = {
     question: "Who score the fastest goal scored in Premier League history?",
     answers: ["Cesc Fabregas", "Mohamed Salah", "Graziano Pelle", "Shane Long"],
     correctAnswer: "Shane Long",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans16.png",
   }),
   (qSeventeen = {
     question: "Which country won the first ever World Cup in 1930?",
     answers: ["Brazil", "Uruguay", "Argentina", "Italy"],
     correctAnswer: "Uruguay",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans17.png",
   }),
   (qEighteen = {
     question:
       "Cristiano Ronaldo is synonymous with the No.7, but what other number did he wear at Real Madrid?",
     answers: ["77", "17", "28", "9"],
     correctAnswer: "9",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans18.png",
   }),
   (qNineteen = {
     question: "Who was the first goalkeeper to score a Premier League goal?",
@@ -189,25 +194,26 @@ var questions = [
       "David Seaman",
     ],
     correctAnswer: "Peter Schmeichel",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans19.png",
   }),
   (qTwenty = {
     question: "Which of these teams is not from London?",
     answers: ["Arsenal", "Brentford FC", "Crystal Palace", "Watford FC"],
     correctAnswer: "Watford FC",
+    img: "assets/images/qImages/ans20.png",
   }),
   (qTwentyOne = {
     question: "Which of these teams is not from Madrid?",
     answers: ["CF Fuenlabrada", "CD Leganés", "CA Osasuna", "Real Madrid"],
     correctAnswer: "CA Osasuna",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans21.png",
   }),
   (qTwentyTwo = {
     question:
       "After Juventus, AC Milan and Inter, with nine Scudettos, which team has won the most Serie A titles?",
     answers: ["Genoa", "Napoli", "Torino", "Atalanta"],
     correctAnswer: "Genoa",
-    img: "../images/qImages/ans1.png",
+    img: "assets/images/qImages/ans22.png",
   }),
 ];
 
@@ -228,6 +234,8 @@ function correctAnswer() {
 
 function incorrectAnswer() {
   clearInterval(timeInterval);
+  answerImage.classList.remove("hidden");
+  answerImage.setAttribute("src", questionsArray[arrayindex].img);
   listEl.textContent = "";
   console.log("You are fucking not correct");
   answerOutputEl.textContent = "Wrong Answer";
@@ -390,7 +398,7 @@ function countdown() {
       timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
       if (timeLeft > 5) {
         var timing = document.querySelector("span");
-        timing.style.color = "#B3FFAE";
+        timing.style.color = "#9CFF2E";
       } else {
         var timing = document.querySelector("span");
         timing.style.color = "#FF0032";
@@ -406,7 +414,7 @@ function countdown() {
   }, 1000); // 1000 milliseconds
   timeEl.innerHTML = "<span>" + timeLeft +"</span>" + " Seconds Left.";
   var timing = document.querySelector("span");
-  timing.style.color = "#B3FFAE";
+  timing.style.color = "#38E54D";
 }
 
 function startQuiz() {
@@ -424,6 +432,7 @@ function startQuiz() {
 
 function diplayQuestion() {
   countdown();
+  answerImage.classList.add("hidden");
   body.classList.remove("bg"+bgSelect)
   qCounter++;
   bgSelect = Math.floor(Math.random() * 20);
