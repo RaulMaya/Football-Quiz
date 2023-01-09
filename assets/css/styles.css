@@ -1,13 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Anybody:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anybody:wght@500&display=swap");
 
 * {
   margin: 0%;
   padding: 0%;
-  font-family: 'Anybody', cursive;
+  font-family: "Anybody", cursive;
 }
 
 body {
-  background-color: #00ce7f;
+  background-color: gray;
+  background-image: url(../images/goat.png);
+  background-size: cover;
 }
 
 nav {
@@ -24,12 +26,13 @@ header ul {
 }
 
 section {
+  margin-top: 10%;
+  position: relative;
+  display: block;
   text-align: center;
-  z-index: 2;
-}
-
-img {
-  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 .hidden {
@@ -37,7 +40,7 @@ img {
 }
 
 ul {
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 ul li {
@@ -45,16 +48,39 @@ ul li {
   margin-bottom: 12px;
 }
 
-button {
-  width: 150px;
-  cursor: pointer;
-  padding: 2px
+input {
+  width: 200px;
+}
+
+.title {
+  font-size: 6rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.subtitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
 }
 
 #start-quiz-button {
-  margin-top: 1rem;
+  background-color: white;
+  border: 2px black solid;
+  color: black;
+  padding: 12px;
+}
+
+button {
+  width: 150px;
+  cursor: pointer;
+  padding: 2px;
 }
 
 #highscores {
   cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
 }
+
+/* Background Styles */

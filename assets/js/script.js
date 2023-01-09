@@ -1,6 +1,6 @@
 var startBtn = document.getElementById("start-quiz-button");
-var mainImage = document.querySelector("img");
 var h1Text = document.querySelector("h1");
+var h3Text = document.querySelector("h3");
 var mainSection = document.querySelector("section");
 var highscores = document.querySelector("#highscores");
 var main = document.querySelector("main");
@@ -374,7 +374,7 @@ function countdown() {
 
 function startQuiz() {
   startBtn.setAttribute("class", "hidden");
-  mainImage.setAttribute("class", "hidden");
+  h3Text.setAttribute("class", "hidden");
   h1Text.setAttribute("class", "hidden");
   startMenu.classList.add("hidden");
   questionsArray = Array.from(questions);
