@@ -8,8 +8,8 @@
 
 body {
   background-color: gray;
-  background-image: url(../images/goat.png);
   background-size: cover;
+  background-position: top;
 }
 
 nav {
@@ -26,7 +26,6 @@ header ul {
 }
 
 section {
-  margin-top: 10%;
   position: relative;
   display: block;
   text-align: center;
@@ -53,15 +52,18 @@ input {
 }
 
 .title {
+  margin-top: 20%;
   font-size: 6rem;
   margin-bottom: 1rem;
   color: white;
+  text-shadow: 8px 8px 16px black;
 }
 
 .subtitle {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   color: white;
+  text-shadow: 16px 16px 32px black;
 }
 
 #start-quiz-button {
@@ -83,4 +85,101 @@ button {
   color: white;
 }
 
+.questionAsked {
+  margin-top: 5%;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 32px 32px 64px black;
+}
+
+.timer {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 32px 32px 64px black;
+}
+
+
+
+
 /* Background Styles */
+.bg0 {
+  background-image: url(../images/goat.png);
+}
+
+.bg1 {
+  background-image: url(../images/uclfinal.png);
+}
+
+.bg2 {
+  background-image: url(../images/depression.png);
+}
+
+.bg3 {
+  background-image: url(../images/goats.png);
+}
+
+.bg4 {
+  background-image: url(../images/jogabonito.png);
+}
+
+.bg5 {
+  background-image: url(../images/lpool.png);
+}
+
+.bg6 {
+  background-image: url(../images/magic.png);
+}
+
+.bg7 {
+  background-image: url(../images/portrait.png);
+}
+
+.bg8 {
+  background-image: url(../images/ranieri.png);
+}
+
+.bg9 {
+  background-image: url(../images/rossonero.png);
+}
+
+.bg10 {
+  background-image: url(../images/war.png);
+}
+
+.bg11 {
+  background-image: url(../images/cheat.png);
+}
+
+.bg12 {
+  background-image: url(../images/flyingdutch.png);
+}
+
+.bg13 {
+  background-image: url(../images/greatness.png);
+}
+
+.bg14 {
+  background-image: url(../images/happiness.png);
+}
+
+.bg15 {
+  background-image: url(../images/ibelongtojesus.png);
+}
+
+.bg16 {
+  background-image: url(../images/legends.png);
+}
+
+.bg17 {
+  background-image: url(../images/lifesaver.png);
+}
+
+.bg18 {
+  background-image: url(../images/sadness.png);
+}
+
+.bg19 {
+  background-image: url(../images/thanks.png);
+}
+

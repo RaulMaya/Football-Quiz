@@ -1,3 +1,4 @@
+var body = document.querySelector("body");
 var startBtn = document.getElementById("start-quiz-button");
 var h1Text = document.querySelector("h1");
 var h3Text = document.querySelector("h3");
@@ -6,7 +7,7 @@ var highscores = document.querySelector("#highscores");
 var main = document.querySelector("main");
 
 var timeEl = document.createElement("p");
-var h2Text = document.createElement("h2");
+var askedQuestion = document.createElement("h2");
 var listEl = document.createElement("ul");
 var answerOutputEl = document.createElement("div");
 var gameOverText = document.createElement("p");
@@ -19,11 +20,13 @@ var startMenu = document.createElement("button");
 var clearHighScores = document.createElement("button");
 var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
-var noHighScores = document.createElement("p")
+var noHighScores = document.createElement("p");
 
 inputHighScore.setAttribute("id", "highScoreName");
+askedQuestion.setAttribute("class", "questionAsked");
+timeEl.setAttribute("class", "timer")
 
-mainSection.append(h2Text);
+mainSection.append(askedQuestion);
 mainSection.append(listEl);
 mainSection.append(answerOutputEl);
 mainSection.append(feedBackAnswer);
@@ -39,8 +42,6 @@ var timeLeft,
 var userArr = [];
 var scoresArr = [];
 var sortable = [];
-
-//localStorage.clear();
 
 var questions = [
   (qOne = {
@@ -174,8 +175,8 @@ var questions = [
   }),
   (qTwenty = {
     question: "Which of these teams is not from London?",
-    answers: ["Arsenal", "Brentford FC", "Crystal Palace", "Watford"],
-    correctAnswer: "Watford",
+    answers: ["Arsenal", "Brentford FC", "Crystal Palace", "Watford FC"],
+    correctAnswer: "Watford FC",
   }),
   (qTwentyOne = {
     question: "Which of these teams is not from Madrid?",
@@ -189,6 +190,11 @@ var questions = [
     correctAnswer: "Genoa",
   }),
 ];
+
+//Generating a new background
+bgSelect = Math.floor(Math.random() * 20);
+console.log("bg"+bgSelect);
+body.classList.add("bg"+bgSelect)
 
 function correctAnswer() {
   clearInterval(timeInterval);
@@ -301,7 +307,7 @@ function gameOver() {
   inputHighScore.classList.remove("hidden");
   resetGame.classList.add("hidden");
   startMenu.classList.add("hidden");
-  h2Text.textContent = "";
+  askedQuestion.textContent = "";
   listEl.textContent = "";
   timeEl.textContent = "";
   answerOutputEl.textContent = "";
@@ -387,7 +393,11 @@ function startQuiz() {
 
 function diplayQuestion() {
   countdown();
+  body.classList.remove("bg"+bgSelect)
   qCounter++;
+  bgSelect = Math.floor(Math.random() * 20);
+  console.log("bg"+bgSelect);
+  body.classList.add("bg"+bgSelect)
   console.log(qCounter);
   score.textContent = "";
   answerOutputEl.textContent = "";
@@ -400,7 +410,7 @@ function diplayQuestion() {
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);
     console.log(arrayindex);
-    h2Text.textContent = questionsArray[arrayindex].question;
+    askedQuestion.textContent = questionsArray[arrayindex].question;
     listEl.textContent = "";
     for (item of questionsArray[arrayindex].answers) {
       console.log(item);
@@ -458,7 +468,7 @@ function watchScores() {
     startMenu.classList.remove("hidden");
     highscoreTable.remove();
     var highScoreSection = document.createElement("section");
-    
+
     main.append(highScoreSection);
     noHighScores.textContent = "No High Scores Registered";
     clearHighScores.textContent = "Clear High Scores";
@@ -497,7 +507,6 @@ function watchScores() {
     sortingScores();
     tableGeneration();
   }
-
 }
 
 startBtn.addEventListener("click", startQuiz);
