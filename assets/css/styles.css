@@ -117,7 +117,7 @@ img {
   width: 390px;
   height: 350px;
   box-shadow: 8px 8px 16px black;
-  border: 5px #FFE15D solid;
+  border: 5px #ffe15d solid;
 }
 
 .feedback {
@@ -127,7 +127,7 @@ img {
   padding: 5px;
 }
 
-.ansOutput { 
+.ansOutput {
   font-size: 2.5rem;
   color: white;
   text-shadow: 8px 8px 16px black;
@@ -159,7 +159,7 @@ img {
 }
 
 .finalScore {
-  color:#FFE15D
+  color: #ffe15d;
 }
 
 .urName {
@@ -170,8 +170,8 @@ img {
 
 table {
   margin-top: 2.5rem;
-  margin-left:auto; 
-  margin-right:auto; 
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 2rem;
 }
 
@@ -180,7 +180,7 @@ td {
   color: white;
   padding: 6px;
   font-size: 1.25rem;
-  background-color: #6B728E;
+  background-color: #6b728e;
   box-shadow: 8px 8px 16px black;
 }
 
@@ -203,7 +203,6 @@ th {
 main {
   text-align: center;
 }
-
 
 /* Background Styles */
 .bg0 {
@@ -293,9 +292,9 @@ main {
 @media only screen and (max-width: 450px) {
   .title {
     margin-top: 50%;
-    font-size:3rem;
+    font-size: 3rem;
   }
-  
+
   .subtitle {
     font-size: 1.25rem;
     margin-bottom: 2rem;
@@ -309,86 +308,136 @@ main {
     width: 110px;
   }
 
+  #highscores {
+    font-size: 0.75rem;
+  }
+
+  .questionAsked,
+  .feedback {
+    font-size: 1.25rem;
+  }
+
+  .timer,
+  .score {
+    font-size: 1.75rem;
+  }
+
+  .multipleChoice {
+    padding: 10px 5px;
+    width: 150px;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  img {
+    margin-top: 1rem;
+    width: 290px;
+    height: 250px;
+  }
+
+  .ansOutput {
+    font-size: 2rem;
+  }
+
+  .gameOver {
+    font-size: 3rem;
+  }
+
+  .urName {
+    font-size: 1rem;
+  }
+
+  .lastButtons {
+    font-size: 0.75rem;
+    width: 80px;
+  }
+
+  .noHighscores {
+    font-size: 2rem;
+    margin-bottom: 0rem;
+    margin-top: 6rem;
+  }
+
   .bg0 {
     background-image: url(../images/phoneDevice/argentine.png);
   }
-  
+
   .bg1 {
     background-image: url(../images/phoneDevice/badboy.png);
   }
-  
+
   .bg2 {
     background-image: url(../images/phoneDevice/beckenbauer.png);
   }
-  
+
   .bg3 {
     background-image: url(../images/phoneDevice/becks.png);
   }
-  
+
   .bg4 {
     background-image: url(../images/phoneDevice/comander.png);
   }
-  
+
   .bg5 {
     background-image: url(../images/phoneDevice/cruyff.png);
   }
-  
+
   .bg6 {
     background-image: url(../images/phoneDevice/curve.png);
   }
-  
+
   .bg7 {
     background-image: url(../images/phoneDevice/dinho.png);
   }
-  
+
   .bg8 {
     background-image: url(../images/phoneDevice/divino.png);
   }
-  
+
   .bg9 {
     background-image: url(../images/phoneDevice/dream.png);
   }
-  
+
   .bg10 {
     background-image: url(../images/phoneDevice/fabregas.png);
   }
-  
+
   .bg11 {
     background-image: url(../images/phoneDevice/giggs.png);
   }
-  
+
   .bg12 {
     background-image: url(../images/phoneDevice/gladiatore.png);
   }
-  
+
   .bg13 {
     background-image: url(../images/phoneDevice/goatime.png);
   }
-  
+
   .bg14 {
     background-image: url(../images/phoneDevice/magestic.png);
   }
-  
+
   .bg15 {
     background-image: url(../images/phoneDevice/mou.png);
   }
-  
+
   .bg16 {
     background-image: url(../images/phoneDevice/orei.png);
   }
-  
+
   .bg17 {
     background-image: url(../images/phoneDevice/poetry.png);
   }
-  
+
   .bg18 {
     background-image: url(../images/phoneDevice/nazario.png);
   }
-  
+
   .bg19 {
     background-image: url(../images/phoneDevice/wallitalian.png);
   }
-  
+
   .bg20 {
     background-image: url(../images/phoneDevice/zizou.png);
   }
