@@ -478,7 +478,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 10) {
+  if (qCounter > 2) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);

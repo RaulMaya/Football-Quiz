@@ -74,7 +74,6 @@ input {
   background-color: white;
   color: black;
   padding: 12px;
-
 }
 
 button {
@@ -291,3 +290,106 @@ main {
   background-image: url(../images/crash.png);
 }
 
+@media only screen and (max-width: 450px) {
+  .title {
+    margin-top: 50%;
+    font-size:3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  #start-quiz-button {
+    padding: 8px;
+  }
+
+  button {
+    width: 110px;
+  }
+
+  .bg0 {
+    background-image: url(../images/phoneDevice/argentine.png);
+  }
+  
+  .bg1 {
+    background-image: url(../images/phoneDevice/badboy.png);
+  }
+  
+  .bg2 {
+    background-image: url(../images/phoneDevice/beckenbauer.png);
+  }
+  
+  .bg3 {
+    background-image: url(../images/phoneDevice/becks.png);
+  }
+  
+  .bg4 {
+    background-image: url(../images/phoneDevice/comander.png);
+  }
+  
+  .bg5 {
+    background-image: url(../images/phoneDevice/cruyff.png);
+  }
+  
+  .bg6 {
+    background-image: url(../images/phoneDevice/curve.png);
+  }
+  
+  .bg7 {
+    background-image: url(../images/phoneDevice/dinho.png);
+  }
+  
+  .bg8 {
+    background-image: url(../images/phoneDevice/divino.png);
+  }
+  
+  .bg9 {
+    background-image: url(../images/phoneDevice/dream.png);
+  }
+  
+  .bg10 {
+    background-image: url(../images/phoneDevice/fabregas.png);
+  }
+  
+  .bg11 {
+    background-image: url(../images/phoneDevice/giggs.png);
+  }
+  
+  .bg12 {
+    background-image: url(../images/phoneDevice/gladiatore.png);
+  }
+  
+  .bg13 {
+    background-image: url(../images/phoneDevice/goatime.png);
+  }
+  
+  .bg14 {
+    background-image: url(../images/phoneDevice/magestic.png);
+  }
+  
+  .bg15 {
+    background-image: url(../images/phoneDevice/mou.png);
+  }
+  
+  .bg16 {
+    background-image: url(../images/phoneDevice/orei.png);
+  }
+  
+  .bg17 {
+    background-image: url(../images/phoneDevice/poetry.png);
+  }
+  
+  .bg18 {
+    background-image: url(../images/phoneDevice/nazario.png);
+  }
+  
+  .bg19 {
+    background-image: url(../images/phoneDevice/wallitalian.png);
+  }
+  
+  .bg20 {
+    background-image: url(../images/phoneDevice/zizou.png);
+  }
+}
