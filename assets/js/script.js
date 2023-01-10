@@ -288,8 +288,10 @@ function settingOnStorage() {
 
 function tableGeneration() {
   console.log(sortable[0][0]);
+  console.log(sortable.length);
+
   for (var i = 0; i < sortable.length; i++) {
-    var tableRow = document.createElement("tr");
+    tableRow = document.createElement("tr");
     if (i === 0) {
       var tableHeaderUser = document.createElement("th");
       var tableHeaderScore = document.createElement("th");
@@ -346,13 +348,12 @@ function sortingScores() {
 
 function gameOver() {
   clearInterval(timeInterval);
-
+  submitHS = document.createElement("button");
   submitHS.setAttribute("class", "lastButtons");
   highscoreTable = document.createElement("table");
   highscoreTable.classList.add("hidden");
   gameOverText.classList.remove("hidden");
   urName.classList.remove("hidden");
-  submitHS.classList.remove("hidden");
   inputHighScore.classList.remove("hidden");
   inputHighScore.setAttribute("placeholder", "Enter your name...");
   inputHighScore.required = true;
@@ -389,19 +390,21 @@ function gameOver() {
     var scores = localStorage.getItem("scores");
     console.log(players, scores);
     if (players === null) {
+      console.log("UNO")
       settingOnStorage();
       sortingScores();
       tableGeneration();
     } else {
       userArr = players.split(",");
       scoresArr = scores.split(",");
+      console.log("DOS")
       settingOnStorage();
       sortingScores();
       tableGeneration();
     }
 
     urName.classList.add("hidden");
-    submitHS.classList.add("hidden");
+    submitHS.remove()
     inputHighScore.classList.add("hidden");
     resetGame.classList.remove("hidden");
     startMenu.classList.remove("hidden");
@@ -455,13 +458,14 @@ function startQuiz() {
   wrongAnswers = 0;
   qCounter = 0;
   highscoreTable.remove();
+  highscoreTable = document.createElement("table");
   diplayQuestion();
 }
 
 function diplayQuestion() {
   countdown();
-  answerImage.setAttribute("src", "#");
   answerImage.classList.add("hidden");
+  answerImage.setAttribute("src", "#");
   body.classList.remove("bg" + bgSelect);
   qCounter++;
   bgSelect = Math.floor(Math.random() * 21);
