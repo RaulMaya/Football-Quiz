@@ -32,7 +32,6 @@ section {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-
 }
 
 .hidden {
@@ -83,6 +82,7 @@ button {
   cursor: pointer;
   padding: 2px;
   box-shadow: 8px 8px 16px black;
+  color: black;
 }
 
 #highscores {
@@ -136,30 +136,69 @@ img {
 }
 
 .gameOver {
-  font-size: 5rem;
+  font-size: 7rem;
   font-weight: bold;
   color: red;
   text-shadow: 8px 8px 16px black;
   padding: 5px;
 }
 
-.submitBtn {
-  padding: 7.5px 2.5px;
-  width: 150px;
+.lastButtons {
+  margin-top: 2rem;
+  padding: 7.5px 7.5px;
+  width: 110px;
   background-color: white;
-  margin-top: 1rem;
   font-size: 1rem;
+  color: black;
 }
 
 .score {
   font-size: 2.5rem;
-  color: white;
+  color: lightskyblue;
   text-shadow: 8px 8px 16px black;
   padding-bottom: 2rem;
 }
 
 .finalScore {
   color:#FFE15D
+}
+
+.urName {
+  font-size: 1.25rem;
+  color: white;
+  text-shadow: 8px 8px 16px black;
+}
+
+table {
+  margin-top: 2.5rem;
+  margin-left:auto; 
+  margin-right:auto; 
+  margin-bottom: 2rem;
+}
+
+td {
+  border: 2px black solid;
+  color: white;
+  padding: 6px;
+  font-size: 1.25rem;
+  background-color: #6B728E;
+  box-shadow: 8px 8px 16px black;
+}
+
+th {
+  border: 2px black solid;
+  background-color: whitesmoke;
+  padding: 12px;
+  font-size: 1.75rem;
+  box-shadow: 8px 8px 16px black;
+}
+
+.noHighscores {
+  font-size: 5rem;
+  color: white;
+  text-shadow: 8px 8px 16px black;
+  padding: 5px;
+  margin-bottom: 2rem;
 }
 
 main {

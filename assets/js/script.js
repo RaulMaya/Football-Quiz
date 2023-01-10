@@ -20,16 +20,22 @@ var inputHighScore = document.createElement("input");
 var highscoreTable = document.createElement("table");
 var noHighScores = document.createElement("p");
 var answerImage = document.createElement("img");
+var submitHS = document.createElement("button");
 
 inputHighScore.setAttribute("id", "highScoreName");
 askedQuestion.setAttribute("class", "questionAsked");
 timeEl.setAttribute("class", "timer");
+startMenu.setAttribute("class", "lastButtons");
+resetGame.setAttribute("class", "lastButtons");
+clearHighScores.setAttribute("class", "lastButtons");
+noHighScores.setAttribute("class", "noHighscores");
 
 mainSection.append(askedQuestion);
 mainSection.append(listEl);
 mainSection.append(answerOutputEl);
 answerOutputEl.setAttribute("class", "ansOutput");
 gameOverText.setAttribute("class", "gameOver");
+urName.setAttribute("class", "urName");
 
 mainSection.append(feedBackAnswer);
 feedBackAnswer.setAttribute("class", "feedback");
@@ -340,9 +346,10 @@ function sortingScores() {
 
 function gameOver() {
   clearInterval(timeInterval);
-  var submitHS = document.createElement("button");
-  submitHS.setAttribute("class", "submitBtn");
+
+  submitHS.setAttribute("class", "lastButtons");
   highscoreTable = document.createElement("table");
+  highscoreTable.classList.add("hidden");
   gameOverText.classList.remove("hidden");
   urName.classList.remove("hidden");
   submitHS.classList.remove("hidden");
@@ -360,7 +367,11 @@ function gameOver() {
   startMenu.textContent = "Start Menu";
   submitHS.textContent = "Submit";
   urName.textContent = "Enter Your Name";
-  score.innerHTML = "Final Score: " + "<span class='finalScore'>" + (rightAnswers / 10) * 100 + "</span>";
+  score.innerHTML =
+    "Final Score: " +
+    "<span class='finalScore'>" +
+    (rightAnswers / 10) * 100 +
+    "</span>";
   score.setAttribute("class", "score");
   mainSection.append(gameOverText);
   mainSection.append(score);
@@ -373,7 +384,7 @@ function gameOver() {
   inputHighScore.value = "";
   submitHS.addEventListener("click", function () {
     console.log(inputHighScore);
-
+    highscoreTable.classList.remove("hidden");
     var players = localStorage.getItem("players");
     var scores = localStorage.getItem("scores");
     console.log(players, scores);
@@ -523,6 +534,7 @@ function watchScores() {
   var scores = localStorage.getItem("scores");
   if (players === null) {
     mainSection.setAttribute("class", "hidden");
+    submitHS.setAttribute("class", "hidden");
     startMenu.classList.remove("hidden");
     highscoreTable.remove();
     var highScoreSection = document.createElement("section");
@@ -543,6 +555,7 @@ function watchScores() {
     });
   } else {
     mainSection.setAttribute("class", "hidden");
+    submitHS.setAttribute("class", "hidden");
     startMenu.classList.remove("hidden");
     highscoreTable.remove();
     highscoreTable = document.createElement("table");
