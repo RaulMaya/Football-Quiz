@@ -224,6 +224,83 @@ var questions = [
     correctAnswer: "Genoa",
     img: "assets/images/qImages/ans22.png",
   }),
+  (qTwentyThree = {
+    question:
+      "In the 2010 world cup who was the captain of Spain?",
+    answers: ["Carles Puyol", "Iker Casillas", "Andres Iniesta", "David Villa"],
+    correctAnswer: "Iker Casillas",
+    img: "assets/images/qImages/ans23.png",
+  }),
+  (qTwentyFour = {
+    question:
+      "Which nations played the 'Copa America Argentina 2011' final?",
+    answers: ["Uruguay-Chile", "Argentina-Uruguay", "Argentina-Chile", "Argentina-Brazil"],
+    correctAnswer: "Uruguay-Chile",
+    img: "assets/images/qImages/ans24.png",
+  }),
+  (qTwentyFive = {
+    question:
+      "Who was the first English player to win league titles in four countries?",
+    answers: ["Eric Dier", "Michael Owen", "David Beckham", "Wayne Rooney"],
+    correctAnswer: "David Beckham",
+    img: "assets/images/qImages/ans25.png",
+  }),
+  (qTwentySix = {
+    question:
+      "What football player holds the world record for most career goals by a keeper?",
+    answers: ["Federico Vilar", "Jose Luis Chilavert", "Jorge Campos", "Rogério Ceni"],
+    correctAnswer: "Rogério Ceni",
+    img: "assets/images/qImages/ans26.png",
+  }),
+  (qTwentySeven = {
+    question:
+      "Who kicked the longest goal in football history?",
+    answers: ["Asmir Begovic", "David De Gea", "Victor Valdes", "David Luiz"],
+    correctAnswer: "Asmir Begovic",
+    img: "assets/images/qImages/ans27.png",
+  }),
+  (qTwentyEight = {
+    question:
+      "Which african national team is nicknamed Les Elephants?",
+    answers: ["Cameroon", "Ivory Coast", "Senegal", "Nigeria"],
+    correctAnswer: "Ivory Coast",
+    img: "assets/images/qImages/ans28.png",
+  }),
+  (qTwentyNine = {
+    question:
+      "What Premier League club is involved with Manchester United in the “Roses Rivalry”?",
+    answers: ["Manchester City", "Liverpool FC", "Leeds United", "Arsenal FC"],
+    correctAnswer: "Leeds United",
+    img: "assets/images/qImages/ans29.png",
+  }),
+  (qThirty = {
+    question:
+      "What was the name of the first Real Madrid's stadium?",
+    answers: ["Estadio del Madrid", "Estadio Monumental", "Estadio de Chamartín", "Estadio Pardos Rubio"],
+    correctAnswer: "Estadio de Chamartín",
+    img: "assets/images/qImages/ans30.png",
+  }),
+  (qThirtyOne = {
+    question:
+      "What country has appeared in the most World Cup's (17) without ever winning the tournament?",
+    answers: ["Belgium", "Mexico", "Uruguay", "Portugal"],
+    correctAnswer: "Mexico",
+    img: "assets/images/qImages/ans31.png",
+  }),
+  (qThirtyTwo = {
+    question:
+      "What Italian legend spent his full career with his hometown club and is the 2nd highest scorer in Serie A history?",
+    answers: ["Francesco Totti", "Alessandro Del Piero", "Luca Toni", "Daniele De Rossi"],
+    correctAnswer: "Francesco Totti",
+    img: "assets/images/qImages/ans32.png",
+  }),
+  (qThirtyThree = {
+    question:
+      "Premier League club Newcastle is also known by which nickname?",
+    answers: ["The Toffees", "The Hoops", "The Magpies", "The Rovers"],
+    correctAnswer: "The Magpies",
+    img: "assets/images/qImages/ans33.png",
+  }),
 ];
 
 //Generating a new background
