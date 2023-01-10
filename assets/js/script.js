@@ -421,7 +421,7 @@ function countdown() {
   // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   timeInterval = setInterval(function () {
     // YOUR CODE HERE
-    if (timeLeft > 1) {
+    if (timeLeft > 10) {
       timeLeft--;
       timeEl.innerHTML = "<span>" + timeLeft + "</span>" + " Seconds Left.";
       if (timeLeft > 5) {
