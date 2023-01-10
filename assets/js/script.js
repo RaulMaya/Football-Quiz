@@ -421,7 +421,7 @@ function countdown() {
   // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
   timeInterval = setInterval(function () {
     // YOUR CODE HERE
-    if (timeLeft > 10) {
+    if (timeLeft > 1) {
       timeLeft--;
       timeEl.innerHTML = "<span>" + timeLeft + "</span>" + " Seconds Left.";
       if (timeLeft > 5) {
@@ -474,7 +474,7 @@ function diplayQuestion() {
   gameOverText.classList.add("hidden");
   resetGame.classList.add("hidden");
   console.log(questionsArray.length);
-  if (qCounter > 1) {
+  if (qCounter > 10) {
     gameOver();
   } else {
     arrayindex = Math.floor(Math.random() * questionsArray.length);
